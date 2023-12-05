@@ -37,12 +37,20 @@
   };
 
   # User account
-  users.users.${username} = {
-    isNormalUser = true;
-    description = name;
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [];
-    uid = 1000;
+  users.users = {
+    andreas = {
+      isNormalUser = true;
+      description = "Andreas";
+      extraGroups = ["networkmanager" "wheel"];
+      packages = with pkgs; [];
+      uid = 1000;
+    };
+    romy = {
+      isNormalUser = true;
+      description = "Romy";
+      extraGroups = ["networkmanager"];
+      packages = with pkgs; [];
+      uid = 1001;
+    };
   };
-
 }

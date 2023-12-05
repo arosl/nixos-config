@@ -7,7 +7,6 @@
   stylix,
   username,
   email,
-  dotfilesDir,
   theme,
   wm,
   browser,

@@ -7,7 +7,6 @@
   stylix,
   username,
   email,
-  dotfilesDir,
   theme,
   wm,
   browser,
@@ -20,18 +19,18 @@
 
   imports = [
     stylix.homeManagerModules.stylix
-    ../hm-modules/wm/gnome.nix #window manager config
-    ../hm-modules/shell/sh.nix # My zsh and bash config
-    ../hm-modules/shell/cli-collection.nix # Useful CLI apps
-    ../hm-modules/app/ranger/ranger.nix # My ranger file manager config
-    ../hm-modules/app/terminal/tmux.nix # Tmux setup
-    ../hm-modules/lang/lsp-formatters.nix # LSP and formaters availabe
-    ../hm-modules/app/editor/vscode/vscode.nix # vscode editor
-    ../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
-    ../hm-modules/app/editor/helix/helix.nix # helix editor
-    ../hm-modules/style/stylix.nix # Styling and themes for my apps
-    ../hm-modules/hardware/bluetooth.nix # Bluetooth
-    ../hm-modules/app/browser/chromium.nix # Chromium
+    # ../../hm-modules/wm/gnome.nix #window manager config
+    ../../hm-modules/shell/sh.nix # My zsh and bash config
+    ../../hm-modules/shell/cli-collection.nix # Useful CLI apps
+    ../../hm-modules/app/ranger/ranger.nix # My ranger file manager config
+    ../../hm-modules/app/terminal/tmux.nix # Tmux setup
+    ../../hm-modules/lang/lsp-formatters.nix # LSP and formaters availabe
+    ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
+    ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
+    ../../hm-modules/app/editor/helix/helix.nix # helix editor
+    ../../hm-modules/style/stylix.nix # Styling and themes for my apps
+    ../../hm-modules/hardware/bluetooth.nix # Bluetooth
+    ../../hm-modules/app/browser/chromium.nix # Chromium
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

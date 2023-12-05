@@ -11,11 +11,11 @@
     hyprland-plugins,
     sops-nix,
     ...
-  } @ inputs: let #this all need to be rearanged so i can have muliple user and systems
+  } @ inputs: let
+    #this all need to be rearanged so i can have muliple user and systems
     # ---- SYSTEM SETTINGS ---- #
     hostname = "phantom"; # hostname
     locale = "en_US.UTF-8"; # select locale
-    profile = "personal"; # select a profile defined from my profiles directory
     sshkey_public = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9WYZgphn4uQ5ZqBkTwbSIk2htGe74EiANdItjgWlrM andreas@ros.land"; # Public sshkey
     system = "x86_64-linux"; # system arch
     timezone = "America/Cancun"; # select timezone
@@ -53,15 +53,36 @@
     homeConfigurations = {
       andreas = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./users/andreas/home.nix]; # load home.nix from selected PROFILE
+        modules = [./users/andreas/home.nix]; # load home.nix
         extraSpecialArgs = {
           # pass config variables from above
           inherit username;
           inherit name;
           inherit hostname;
-          inherit profile;
           inherit email;
-          inherit dotfilesDir;
+          inherit theme;
+          inherit font;
+          inherit fontPkg;
+          inherit wm;
+          inherit wmType;
+          inherit browser;
+          inherit editor;
+          inherit term;
+          inherit timezone;
+          inherit spawnEditor;
+          inherit (inputs) stylix;
+          inherit (inputs) hyprland-plugins;
+        };
+      };
+      romy = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [./users/romy/home.nix]; # load home.nix
+        extraSpecialArgs = {
+          # pass config variables from above
+          username = "romy";
+          name = "Romy";
+          inherit hostname;
+          inherit email;
           inherit theme;
           inherit font;
           inherit fontPkg;
@@ -81,7 +102,7 @@
       phantom = lib.nixosSystem {
         inherit system;
         modules = [
-          ./hosts/phantom/configuration.nix # load configuration.nix from selected PROFILE
+          ./hosts/phantom/configuration.nix # load configuration.nix
           {
             environment.systemPackages = [alejandra.defaultPackage.${system}]; #always use the opinionated alejandra formater
           }
@@ -108,7 +129,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
