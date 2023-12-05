@@ -20,9 +20,8 @@
     system = "x86_64-linux"; # system arch
     timezone = "America/Cancun"; # select timezone
 
-    # ----- USER SETTINGS ----- #
-    browser = "qutebrowser"; # Default browser; must select one from ./user/app/browser/
-    dotfilesDir = "~/Personal/nixos2.0"; # absolute path of the local repo
+    # ----- DEFAULT USER SETTINGS ----- #
+    browser = "qutebrowser"; # Default browser;
     editor = "nvim"; # Default editor;
     email = "andreas@ros.land"; # email (used for certain configurations)
     font = "Intel One Mono"; # Selected font
@@ -31,10 +30,10 @@
     spawnEditor = "nvim";
     term = "alacritty"; # Default terminal command;
     theme = "catppuccin-mocha";
-    username = "andreas"; # username
-    wm = "hyprland"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
+    username = "andreas";
+    wm = "hyprland"; # Selected window manager or desktop environment
     wmType = "wayland"; # x11 or wayland
-
+    
     # create patched nixpkgs
     nixpkgs-patched = (import nixpkgs {inherit system;}).applyPatches {
       name = "nixpkgs-patched";
@@ -56,22 +55,22 @@
         modules = [./users/andreas/home.nix]; # load home.nix
         extraSpecialArgs = {
           # pass config variables from above
-          username = "andreas";
-          name = "Andreas";
           inherit hostname;
-          inherit email;
           inherit theme;
-          inherit font;
-          inherit fontPkg;
-          inherit wm;
-          inherit wmType;
-          inherit browser;
-          inherit editor;
-          inherit term;
           inherit timezone;
-          inherit spawnEditor;
           inherit (inputs) stylix;
           inherit (inputs) hyprland-plugins;
+          username = "andreas";
+          browser = "qutebrowser"; # Default browser;
+          editor = "nvim"; # Default editor;
+          email = "andreas@ros.land"; # email (used for certain configurations)
+          font = "Intel One Mono"; # Selected font
+          fontPkg = pkgs.intel-one-mono; # Font package
+          name = "Andreas"; # name/identifier
+          spawnEditor = "nvim";
+          term = "alacritty"; # Default terminal command;
+          wm = "hyprland"; # Selected window manager or desktop environment
+          wmType = "wayland"; # x11 or wayland
         };
       };
     };
@@ -92,22 +91,21 @@
               users.romy = import ./users/romy/home.nix;
               extraSpecialArgs = {
                 # pass config variables from above
-                username = "romy";
-                name = "romy";
-                inherit hostname;
-                inherit email;
-                inherit theme;
-                inherit font;
-                inherit fontPkg;
-                inherit wm;
-                inherit wmType;
-                inherit browser;
-                inherit editor;
-                inherit term;
-                inherit timezone;
-                inherit spawnEditor;
-                inherit (inputs) stylix;
                 inherit (inputs) hyprland-plugins;
+                inherit (inputs) stylix;
+                inherit hostname;
+                inherit theme;
+                inherit timezone;
+                editor = "nvim";
+                email = "";
+                font = "Intel One Mono"; # Selected font
+                fontPkg = pkgs.intel-one-mono; # Font package
+                name = "romy";
+                spawnEditor = "nvim";
+                term = "alacritty"; # Default terminal command;
+                username = "romy";
+                wm = "gnome"; # Selected window manager or desktop environment
+                wmType = "wayland"; # x11 or wayland
               };
             };
           }

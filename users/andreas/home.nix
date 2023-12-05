@@ -81,6 +81,7 @@
 
       #chat
       telegram-desktop
+      mattermost-desktop
       element-desktop-wayland
       whatsapp-for-linux
       signal-desktop
