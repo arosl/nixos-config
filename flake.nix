@@ -56,31 +56,8 @@
         modules = [./users/andreas/home.nix]; # load home.nix
         extraSpecialArgs = {
           # pass config variables from above
-          inherit username;
-          inherit name;
-          inherit hostname;
-          inherit email;
-          inherit theme;
-          inherit font;
-          inherit fontPkg;
-          inherit wm;
-          inherit wmType;
-          inherit browser;
-          inherit editor;
-          inherit term;
-          inherit timezone;
-          inherit spawnEditor;
-          inherit (inputs) stylix;
-          inherit (inputs) hyprland-plugins;
-        };
-      };
-      romy = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [./users/romy/home.nix]; # load home.nix
-        extraSpecialArgs = {
-          # pass config variables from above
-          username = "romy";
-          name = "Romy";
+          username = "andreas";
+          name = "Andreas";
           inherit hostname;
           inherit email;
           inherit theme;
@@ -105,6 +82,34 @@
           ./hosts/phantom/configuration.nix # load configuration.nix
           {
             environment.systemPackages = [alejandra.defaultPackage.${system}]; #always use the opinionated alejandra formater
+          }
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              # useGlobalPkgs = true;
+              useUserPackages = true;
+              users.romy = import ./users/romy/home.nix;
+              extraSpecialArgs = {
+                # pass config variables from above
+                username = "romy";
+                name = "romy";
+                inherit hostname;
+                inherit email;
+                inherit theme;
+                inherit font;
+                inherit fontPkg;
+                inherit wm;
+                inherit wmType;
+                inherit browser;
+                inherit editor;
+                inherit term;
+                inherit timezone;
+                inherit spawnEditor;
+                inherit (inputs) stylix;
+                inherit (inputs) hyprland-plugins;
+              };
+            };
           }
         ];
         specialArgs = {

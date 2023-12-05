@@ -18,7 +18,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    stylix.homeManagerModules.stylix
     # ../../hm-modules/wm/gnome.nix #window manager config
     ../../hm-modules/shell/sh.nix # My zsh and bash config
     ../../hm-modules/shell/cli-collection.nix # Useful CLI apps
@@ -28,7 +27,6 @@
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
     ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/helix/helix.nix # helix editor
-    ../../hm-modules/style/stylix.nix # Styling and themes for my apps
     ../../hm-modules/hardware/bluetooth.nix # Bluetooth
     ../../hm-modules/app/browser/chromium.nix # Chromium
   ];

@@ -30,6 +30,8 @@
     ../laptop-modules/hardware/power.nix # Power management
     ../laptop-modules/hardware/printing.nix
     ../laptop-modules/style/stylix.nix
+    ../laptop-modules/wm/hyprland.nix
+    ../laptop-modules/wm/gnome.nix
   ];
 
   # Fix nix path
@@ -95,7 +97,6 @@
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal
-      pkgs.xdg-desktop-portal-gtk
     ];
   };
 
