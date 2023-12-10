@@ -52,7 +52,6 @@ in {
     gnugrep
     gnused
     lolcat
-    neofetch
     nix-direnv
   ];
 }

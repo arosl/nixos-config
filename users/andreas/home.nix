@@ -85,6 +85,7 @@
       element-desktop-wayland
       whatsapp-for-linux
       signal-desktop
+      discord
 
       #diving
       deco
@@ -108,7 +109,7 @@
       vlc
       mpv
       yt-dlp
-      ffmpeg
+      jellyfin-ffmpeg
       movit
       mediainfo
       libmediainfo

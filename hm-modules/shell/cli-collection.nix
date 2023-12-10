@@ -26,7 +26,7 @@
     libnotify
     lolcat
     moreutils
-    neofetch
+    fastfetch
     octave
     pandoc
     pciutils

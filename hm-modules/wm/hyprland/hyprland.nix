@@ -1,15 +1,15 @@
 {
-  config,
-  lib,
-  pkgs,
-  stdenv,
-  toString,
   browser,
-  term,
-  spawnEditor,
+  config,
   font,
   hyprland-plugins,
+  lib,
+  pkgs,
+  spawnEditor,
+  stdenv,
+  term,
   timezone,
+  toString,
   ...
 }: {
   imports = [
@@ -37,6 +37,7 @@
     ];
     settings = {
       master = {
+        # set the fraction of the screen for the master window
         mfact = 0.6;
       };
     };
@@ -56,11 +57,9 @@
         exec-once = nm-applet
         exec-once = blueman-applet
         exec-once = GOMAXPROCS=1 syncthing --no-browser
-        exec-once = protonmail-bridge --noninteractive
         exec-once = waybar
 
         exec-once = swayidle -w timeout 300 'gtklock -d' timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep "gtklock -d"
-        exec-once = obs-notification-mute-daemon
 
         exec = ~/.swaybg-stylix
 
@@ -129,8 +128,15 @@
         bind=ALTSHIFT,TAB,cyclenext,prev
         bind=ALTSHIFT,TAB,bringactivetotop
         bind=SUPER,Y,workspaceopt,allfloat
+        bind=SUPER,P,layoutmsg,swapwithmaster master
 
-        bind=SUPER,RETURN,exec,''
+
+        bind=SUPER,T,exec,''
+      + term
+      + ''
+
+        # WIP open terminal in stack
+        # bind=SUPERSHIFT,T,exec,[master, new_is_master true]''
       + term
       + ''
 
@@ -153,7 +159,7 @@
         bind=SUPERSHIFT,Q,exit
         bindm=SUPER,mouse:272,movewindow
         bindm=SUPER,mouse:273,resizewindow
-        bind=SUPER,T,togglefloating
+        bind=SUPER,RETURN,togglefloating
 
         bind=,code:107,exec,grim -g "$(slurp)"
         bind=SHIFT,code:107,exec,grim -g "$(slurp -o)"
