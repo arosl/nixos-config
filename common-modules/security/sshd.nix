@@ -14,7 +14,4 @@
       PermitRootLogin = "no";
     };
   };
-  users.users.${username}.openssh.authorizedKeys.keys = [
-    sshkey_public
-  ];
 }

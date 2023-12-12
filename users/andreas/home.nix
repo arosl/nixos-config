@@ -28,7 +28,7 @@
     ../../hm-modules/app/email/neomutt.nix #neomutt email client
     ../../hm-modules/app/flatpak/flatpak.nix # Flatpaks
     ../../hm-modules/app/git/git.nix # My git config
-    ../../hm-modules/app/pwmanager/bitwarden.nix # install bitwarden
+    # ../../hm-modules/app/pwmanager/bitwarden.nix # install bitwarden
     ../../hm-modules/app/pwmanager/pass.nix # install pass
     ../../hm-modules/app/ranger/ranger.nix # My ranger file manager config
     ../../hm-modules/app/terminal/tmux.nix # Tmux setup
@@ -63,9 +63,7 @@
       rofi
       git
       syncthing
-      bitwarden
-      rbw
-      rofi-rbw-wayland
+      manix
 
       # Office
       libreoffice-fresh

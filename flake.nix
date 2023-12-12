@@ -35,13 +35,13 @@
     wmType = "wayland"; # x11 or wayland
     
     # create patched nixpkgs
-    nixpkgs-patched = (import nixpkgs {inherit system;}).applyPatches {
-      name = "nixpkgs-patched";
-      src = nixpkgs;
-    };
+    # nixpkgs-patched = (import nixpkgs {inherit system;}).applyPatches {
+    #   name = "nixpkgs-patched";
+    #   src = nixpkgs;
+    # };
 
     # configure pkgs
-    pkgs = import nixpkgs-patched {
+    pkgs = import nixpkgs {
       inherit system;
       config = {allowUnfree = true;};
     };
