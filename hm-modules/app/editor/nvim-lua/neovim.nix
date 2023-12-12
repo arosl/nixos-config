@@ -12,6 +12,8 @@
   #I'm configuring nvim with lua directly in .config/nvim but I will add system dependencies here
   home.packages = with pkgs; [
     (pkgs.nerdfonts.override {fonts = ["Mononoki"];})
+    gcc
+    lua
   ];
 
   #make sure nerdfonts is installed

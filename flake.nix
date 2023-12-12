@@ -14,7 +14,7 @@
   } @ inputs: let
     #this all need to be rearanged so i can have muliple user and systems
     # ---- SYSTEM SETTINGS ---- #
-    hostname = "phantom"; # hostname
+    hostname = "phantom"; # hostname #FIXME 
     locale = "en_US.UTF-8"; # select locale
     sshkey_public = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9WYZgphn4uQ5ZqBkTwbSIk2htGe74EiANdItjgWlrM andreas@ros.land"; # Public sshkey
     system = "x86_64-linux"; # system arch
@@ -115,6 +115,58 @@
           inherit username;
           inherit name;
           inherit hostname;
+          inherit timezone;
+          inherit locale;
+          inherit theme;
+          inherit font;
+          inherit fontPkg;
+          inherit wm;
+          inherit sops-nix;
+          inherit sshkey_public;
+          inherit (inputs) stylix;
+          inherit (inputs) blocklist-hosts;
+        };
+      };
+      hypoxic = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./hosts/hypoxic/configuration.nix # load configuration.nix
+          {
+            environment.systemPackages = [alejandra.defaultPackage.${system}]; #always use the opinionated alejandra formater
+          }
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              # useGlobalPkgs = true;
+              useUserPackages = true;
+              users.romy = import ./users/romy/home.nix;
+              extraSpecialArgs = {
+                # pass config variables from above
+                inherit (inputs) hyprland-plugins;
+                inherit (inputs) stylix;
+                hostname = "hypoxic";
+                inherit theme;
+                inherit timezone;
+                editor = "nvim";
+                email = "";
+                font = "Intel One Mono"; # Selected font
+                fontPkg = pkgs.intel-one-mono; # Font package
+                name = "romy";
+                spawnEditor = "nvim";
+                term = "alacritty"; # Default terminal command;
+                username = "romy";
+                wm = "gnome"; # Selected window manager or desktop environment
+                wmType = "wayland"; # x11 or wayland
+              };
+            };
+          }
+        ];
+        specialArgs = {
+          # pass config variables from above
+          inherit username;
+          inherit name;
+          hostname = "hypoxic";
           inherit timezone;
           inherit locale;
           inherit theme;
