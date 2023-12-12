@@ -5,8 +5,7 @@
 }: let
   # My shell aliases
   myAliases = {
-    ll = "eza --icons -l -T -L=1";
-    ls = "eza --icons";
+    # ll = "eza --icons -l -T -L=1";
     cat = "bat --plain";
     htop = "btm";
     fd = "fd -Lu";
@@ -17,6 +16,13 @@
   };
 in {
   programs = {
+    eza = {
+      enable = true;
+      enableAliases = true;
+      icons = true;
+      # extraOptions = [];
+    };
+    
     zsh = {
       enable = true;
       enableAutosuggestions = true;

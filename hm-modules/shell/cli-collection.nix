@@ -13,7 +13,6 @@
     cava
     cowsay
     dig
-    eza
     fd
     fzf
     gnugrep
@@ -21,7 +20,7 @@
     htop
     hwinfo
     jq
-    inetutils
+    inetutils #provides whois
     killall
     libnotify
     lolcat
@@ -37,10 +36,6 @@
     unzip
     vim
     w3m
-    #whois using the inetutils instead 
-    #(pkgs.callPackage ../pkgs/ytsub.nix { })
-    #(pkgs.callPackage ../pkgs/russ.nix { })
-    #(pkgs.callPackage ../pkgs/pokemon-colorscripts.nix {})
     (pkgs.writeShellScriptBin "airplane-mode" ''
       #!/bin/sh
       connectivity="$(nmcli n connectivity)"
