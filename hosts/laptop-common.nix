@@ -26,7 +26,6 @@
     ../common-modules/security/sops-nix.nix
     ../common-modules/security/sshd.nix
     ../laptop-modules/hardware/bluetooth.nix #hardware config for bluetooth
-    ../laptop-modules/hardware/nvidia.nix #nvidia config, this might have to be moved to hosts 
     ../laptop-modules/hardware/opengl.nix
     ../laptop-modules/hardware/power.nix # Power management
     ../laptop-modules/hardware/printing.nix

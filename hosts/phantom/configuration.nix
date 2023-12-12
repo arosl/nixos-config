@@ -18,6 +18,7 @@
 }: {
   imports = [
     ../laptop-common.nix #shared config between laptops
+    ../../laptop-modules/hardware/nvidia_old.nix #nvidia config for older card
     ./hardware-configuration.nix
     ./security/wireguard.nix
   ];
