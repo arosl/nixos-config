@@ -14,8 +14,9 @@
       powerManagement.enable = true;
       powerManagement.finegrained = false;
       
-      # 
-      open = true;
+      # setting this to false to see if this solves 
+      # https://github.com/hyprwm/Hyprland/issues/1728
+      open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
 

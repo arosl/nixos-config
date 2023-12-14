@@ -474,21 +474,21 @@
           "all-outputs" = true;
           "active-only" = true;
           "ignore-workspaces" = "-";
-          "persistent-workspaces" = {
-            # this block doesn't seem to work for whatever reason
-            "eDP-1" = [1 2 3 4 5 6 7 8 9];
-            "DP-1" = [1 2 3 4 5 6 7 8 9];
-            "HDMI-A-1" = [1 2 3 4 5 6 7 8 9];
-            "1" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "2" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "3" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "4" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "5" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "6" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "7" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "8" = ["eDP-1" "DP-1" "HDMI-A-1"];
-            "9" = ["eDP-1" "DP-1" "HDMI-A-1"];
-          };
+          # "persistent-workspaces" = {
+          #   # this block doesn't seem to work for whatever reason
+          #   "eDP-1" = [1 2 3 4 5 6 7 8 9];
+          #   "DP-1" = [1 2 3 4 5 6 7 8 9];
+          #   "HDMI-A-1" = [1 2 3 4 5 6 7 8 9];
+          #   "1" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "2" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "3" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "4" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "5" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "6" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "7" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "8" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          #   "9" = ["eDP-1" "DP-1" "HDMI-A-1"];
+          # };
         };
 
         "idle_inhibitor" = {
