@@ -256,12 +256,12 @@
 
         bind=SUPER,I,exec,networkmanager_dmenu
 
-        monitor=eDP-1,1920x1080,1000x1200,1
-        monitor=HDMI-A-1,1920x1200,1920x0,1
-        monitor=DP-1,1920x1200,0x0,1
+        # monitor=eDP-1,1920x1080,1000x1200,1
+        # monitor=HDMI-A-1,1920x1200,1920x0,1
+        # monitor=DP-1,1920x1200,0x0,1
 
         xwayland {
-          force_zero_scaling = true
+          # force_zero_scaling = true
         }
 
         env = WLR_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0

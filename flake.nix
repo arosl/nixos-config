@@ -14,7 +14,7 @@
   } @ inputs: let
     #this all need to be rearanged so i can have muliple user and systems
     # ---- SYSTEM SETTINGS ---- #
-    hostname = "phantom"; # hostname #FIXME 
+    hostname = "hypoxic"; # hostname #FIXME 
     locale = "en_US.UTF-8"; # select locale
     sshkey_public = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9WYZgphn4uQ5ZqBkTwbSIk2htGe74EiANdItjgWlrM andreas@ros.land"; # Public sshkey
     system = "x86_64-linux"; # system arch

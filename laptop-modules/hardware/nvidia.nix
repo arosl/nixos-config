@@ -11,10 +11,11 @@
     nvidia = {
       modesetting.enable = true;
       # power management not suppored by mx150
-      powerManagement.enable = false;
+      powerManagement.enable = true;
       powerManagement.finegrained = false;
-      # mx150 not supported by open
-      open = false;
+      
+      # 
+      open = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
 
