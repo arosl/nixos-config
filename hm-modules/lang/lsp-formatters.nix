@@ -6,6 +6,8 @@ config,
 
 
   home.packages = with pkgs; [
+    ansible-language-server
+    ansible-lint
     efm-langserver
     eslint_d
     hadolint

@@ -7,25 +7,26 @@
   # Collection of useful CLI apps
   home.packages = with pkgs; [
     # Command Line
+    ansible
     bat
     bottom
     brightnessctl
     cava
     cowsay
     dig
+    fastfetch
     fd
     fzf
     gnugrep
     gnused
     htop
     hwinfo
-    jq
     inetutils #provides whois
+    jq
     killall
     libnotify
     lolcat
     moreutils
-    fastfetch
     octave
     pandoc
     pciutils
@@ -36,6 +37,8 @@
     unzip
     vim
     w3m
+    yq
+    xmlstarlet
     (pkgs.writeShellScriptBin "airplane-mode" ''
       #!/bin/sh
       connectivity="$(nmcli n connectivity)"
@@ -47,5 +50,4 @@
       fi
     '')
   ];
-
 }
