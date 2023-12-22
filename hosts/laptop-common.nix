@@ -18,6 +18,7 @@
 }: {
   imports = [
     ../common-modules/app/virtualization.nix
+    ../common-modules/app/steam.nix
     ../common-modules/hardware/kernel.nix # Kernel config
     ../common-modules/security/blocklist.nix # Blocklist of known bad hosts
     ../common-modules/security/doas.nix # Use doas instead of sudo to reduce complexity

@@ -16,6 +16,7 @@
     dig
     fastfetch
     fd
+    file
     fzf
     gnugrep
     gnused

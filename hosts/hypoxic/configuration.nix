@@ -42,7 +42,7 @@
     andreas = {
       isNormalUser = true;
       description = "Andreas";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = ["networkmanager" "wheel" "dialout"];
       packages = with pkgs; [];
       uid = 1000;
     };
