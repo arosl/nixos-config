@@ -36,6 +36,7 @@
     ../../hm-modules/hardware/bluetooth.nix # Bluetooth
     ../../hm-modules/lang/lsp-formatters.nix # LSP and formaters availabe
     ../../hm-modules/lang/python/python3.nix # python3
+    # ../../hm-modules/llm/ollama/ollama.nix # Ollama LLM
     ../../hm-modules/shell/cli-collection.nix # Useful CLI apps
     ../../hm-modules/shell/sh.nix # My zsh and bash config
     ../../hm-modules/style/stylix.nix # Styling and themes for my apps

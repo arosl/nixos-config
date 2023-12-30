@@ -14,6 +14,7 @@
     (pkgs.nerdfonts.override {fonts = ["Mononoki"];})
     gcc
     lua
+    go
   ];
 
   #make sure nerdfonts is installed

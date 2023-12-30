@@ -1,14 +1,13 @@
 {
-pkgs,
-config,
-...
-  }: {
-
-
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     ansible-language-server
     ansible-lint
     efm-langserver
+    emmet-ls
     eslint_d
     hadolint
     lua
@@ -25,5 +24,6 @@ config,
     statix
     stylua
     vscode-langservers-extracted
+    gopls
   ];
- }
+}
