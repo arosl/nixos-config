@@ -17,8 +17,8 @@
   services.xserver = {
     enable = true;
     layout = "us";
-    xkbVariant = "";
-    xkbOptions = "caps:escape";
+    xkbVariant = "intl";
+    # xkbOptions = "caps:escape";
     displayManager.gdm = {
       enable = true;
       wayland = true;

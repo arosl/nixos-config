@@ -112,15 +112,6 @@
         #  }
         #}
 
-        #Norwegian characters, alternativly use mac layout 
-        #Should ideally be done in the kb_layout bound to CAPS 
-        #and have CAPS disabled but this works for now
-        bind=CTRL,semicolon,exec,wtype ""ø"
-        bind=CTRL,apostrophe,exec,wtype "æ"
-        bind=CTRL,bracketleft,exec,wtype "å"
-        bind=SHIFTCTRL,semicolon,exec,wtype "Ø"
-        bind=SHIFTCTRL,apostrophe,exec,wtype "Æ"
-        bind=SHIFTCTRL,bracketleft,exec,wtype "Å"
 
         bind=SUPER,SPACE,fullscreen,1
         bind=ALT,TAB,cyclenext
@@ -270,6 +261,7 @@
         input {
           kb_layout = us
           kb_options = ctrl:nocaps
+          kb_variant = mac
           repeat_delay = 350
           repeat_rate = 50
           accel_profile = adaptive
