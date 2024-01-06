@@ -25,6 +25,7 @@
     inetutils #provides whois
     jq
     killall
+    lazygit
     libnotify
     lolcat
     moreutils

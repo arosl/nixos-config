@@ -177,8 +177,8 @@
         bind=,code:232,exec,brightnessctl set 15-
         bind=,code:233,exec,brightnessctl set +15
 
-        bind=SUPERSHIFT,S,exec,gtklock & sleep 1 && systemctl suspend
-        bind=SUPERCTRL,L,exec,gtklock
+        bind=SUPERSHIFT,S,exec,gtklock -i & sleep 1 && systemctl suspend
+        bind=SUPERCTRL,L,exec,gtklock -i
 
         bind=SUPER,H,movefocus,l
         bind=SUPER,J,movefocus,d
