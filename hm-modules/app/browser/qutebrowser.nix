@@ -138,7 +138,7 @@
       config.bind('t', 'open -t')
       config.bind('x', 'tab-close')
       config.bind('yf', 'hint links yank')
-      config.bind(',m', 'hint links spawn mpv {hint-url}')
+      config.bind(',m', 'hint links spawn mpv --audio-device=alsa/pipewire {hint-url}')
       config.bind(',co', 'spawn container-open')
       config.bind(',cf', 'hint links userscript container-open')
       #config.bind(',s', 'set content.user_stylesheets \'\' ')

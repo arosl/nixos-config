@@ -9,11 +9,14 @@
     efm-langserver
     emmet-ls
     eslint_d
+    gopls
     hadolint
     lua
     lua-language-server
     lua54Packages.luacheck
     nixd
+    nodePackages_latest.typescript-language-server 
+    nodePackages_latest.bash-language-server
     nodePackages_latest.fixjson
     prettierd
     pyright
@@ -24,6 +27,5 @@
     statix
     stylua
     vscode-langservers-extracted
-    gopls
   ];
 }

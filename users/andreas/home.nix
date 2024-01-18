@@ -88,7 +88,8 @@
       discord
 
       #diving
-      deco
+      # deco
+      # mnemo-tools
       subsurface
 
       #misc
@@ -104,12 +105,13 @@
 
       # Media
       gimp-with-plugins
+      inkscape
       pinta
       krita
       vlc
       mpv
       yt-dlp
-      jellyfin-ffmpeg
+      ffmpeg
       movit
       mediainfo
       libmediainfo

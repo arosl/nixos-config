@@ -34,6 +34,7 @@
     pciutils
     ripgrep
     rsync
+    speedtest-cli
     tmux
     tree
     unzip

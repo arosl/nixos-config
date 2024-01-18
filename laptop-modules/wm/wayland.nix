@@ -18,7 +18,7 @@
     enable = true;
     layout = "us";
     xkbVariant = "intl";
-    # xkbOptions = "caps:escape";
+    xkbOptions = "caps:escape";
     displayManager.gdm = {
       enable = true;
       wayland = true;
