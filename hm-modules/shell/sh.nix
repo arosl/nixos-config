@@ -22,13 +22,26 @@ in {
       icons = true;
       # extraOptions = [];
     };
-    
+
     zsh = {
       enable = true;
       enableAutosuggestions = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
       shellAliases = myAliases;
+      initExtra = ''
+        function puppetdeploy() {
+          ssh -t "$1" 'sudo /local/sbin/deploy.sh'
+        }
+        _puppetdeploy() {
+          local -a hosts
+          # Collect hostnames from known_hosts
+          hosts=($(awk '{print $1}' ~/.ssh/known_hosts | sed 's/,.*//' | uniq))
+          # Offer these hosts as completions
+          _describe 'hostname' hosts
+        }
+        compdef _puppetdeploy puppetdeploy
+      '';
       oh-my-zsh = {
         enable = true;
         theme = "agnoster";
