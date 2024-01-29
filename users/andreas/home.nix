@@ -76,8 +76,10 @@
       gnome.seahorse
       gnome.gnome-maps
 
+      #work
       filezilla
       mosh
+      ipcalc
 
       #chat
       telegram-desktop
@@ -102,6 +104,10 @@
       libffi
       zlib
       nodePackages.ungit
+      nodejs_20
+      sqlite
+      cargo
+      beekeeper-studio
 
       # Media
       gimp-with-plugins
