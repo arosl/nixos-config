@@ -97,8 +97,14 @@
 
       #misc
       tldr
-      stellarium
       disfetch
+
+      #Astro
+      stellarium
+      siril
+
+      #Photo
+      darktable
 
       # Various dev packages
       texinfo
