@@ -43,7 +43,12 @@
     # configure pkgs
     pkgs = import nixpkgs {
       inherit system;
-      config = {allowUnfree = true;};
+      config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [
+                "nix-2.16.2"
+              ];
+        };
     };
 
     # configure lib

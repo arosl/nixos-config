@@ -22,8 +22,6 @@
     pyright
     python311Packages.black
     python311Packages.flake8
-    rnix-lsp
-    shellcheck
     statix
     stylua
     vscode-langservers-extracted
