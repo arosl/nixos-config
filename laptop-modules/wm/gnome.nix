@@ -32,6 +32,11 @@
       hitori # sudoku game
       atomix # puzzle game
     ]);
+  
+  environment.systemPackages = with pkgs; [
+    gnomeExtensions.pop-shell
+    ulauncher
+  ];
 
   services.power-profiles-daemon.enable = false;
   hardware.pulseaudio.enable = false;

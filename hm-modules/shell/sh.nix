@@ -18,14 +18,13 @@ in {
   programs = {
     eza = {
       enable = true;
-      enableAliases = true;
       icons = true;
       # extraOptions = [];
     };
 
     zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
       shellAliases = myAliases;

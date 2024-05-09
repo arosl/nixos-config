@@ -55,18 +55,20 @@
       EDITOR = editor;
       TERM = term;
       BROWSER = browser;
+      FLAKE = "/home/andreas/repos/nixos-config/";
     };
 
     packages = with pkgs; [
       # Core
       zsh
+      nh
       alacritty
       qutebrowser
       dmenu
       rofi
       git
-      syncthing
       manix
+      restic
 
       # Office
       libreoffice-fresh
@@ -94,10 +96,13 @@
       # deco
       # mnemo-tools
       subsurface
+      # qgis
 
       #misc
       tldr
       disfetch
+      # magic-wormhole
+      # googleearth-pro
 
       #Astro
       stellarium
@@ -115,9 +120,11 @@
       sqlite
       cargo
       beekeeper-studio
+      opencv
 
       # Media
-      gimp-with-plugins
+      # gimp-with-plugins
+      gimp
       inkscape
       pinta
       krita
@@ -132,7 +139,6 @@
       audio-recorder
     ];
   };
-  services.syncthing.enable = true;
 
   xdg = {
     enable = true;

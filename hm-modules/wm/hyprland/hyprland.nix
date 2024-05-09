@@ -56,7 +56,6 @@
         exec-once = pypr
         exec-once = nm-applet
         exec-once = blueman-applet
-        exec-once = GOMAXPROCS=1 syncthing --no-browser
         exec-once = waybar
 
         exec-once = swayidle -w timeout 300 'gtklock -d' timeout 600 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep "gtklock -d"
@@ -315,7 +314,15 @@
     #wofi
     fuzzel
     keepmenu
-    pinentry-gnome
+    (pyprland.overrideAttrs (oldAttrs: {
+      src = fetchFromGitHub {
+        owner = "hyprland-community";
+        repo = "pyprland";
+        rev = "refs/tags/2.2.12";
+        hash = "sha256-SVly20/+67d0Rr2SuM1n/JfT1SlyKdKRBLDx2okCZRY=";
+      };
+    }))
+    pinentry
     wev
     grim
     slurp
@@ -366,21 +373,6 @@
       exit 0
 
     '')
-    (pkgs.python3Packages.buildPythonPackage rec {
-      pname = "pyprland";
-      version = "1.4.1";
-      src = pkgs.fetchPypi {
-        inherit pname version;
-        sha256 = "sha256-JRxUn4uibkl9tyOe68YuHuJKwtJS//Pmi16el5gL9n8=";
-      };
-      format = "pyproject";
-      propagatedBuildInputs = with pkgs; [
-        python3Packages.setuptools
-        python3Packages.poetry-core
-        poetry
-      ];
-      doCheck = false;
-    })
   ];
   home.file.".config/hypr/pyprland.json".text = ''
     {

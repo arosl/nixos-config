@@ -45,7 +45,7 @@
       
       #3d printing
       prusa-slicer
-      super-slicer
+      # super-slicer
       cura
 
       #chat
@@ -61,7 +61,7 @@
       gnome.gnome-maps
 
       # Media
-      gimp-with-plugins
+      # gimp-with-plugins
       pinta
       krita
       vlc
@@ -76,7 +76,6 @@
 
     ];
   };
-  services.syncthing.enable = true;
 
   xdg = {
     enable = true;

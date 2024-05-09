@@ -31,7 +31,7 @@ in {
       golang.go
       jdinhlife.gruvbox
       kamadorueda.alejandra
-      ms-python.python
+      # ms-python.python
       ms-python.vscode-pylance
       ms-vscode-remote.remote-ssh
       ms-vsliveshare.vsliveshare
