@@ -17,19 +17,15 @@
   ...
 }: {
   imports = [
-    ../common-modules/app/virtualization.nix
+    # ../common-modules/app/virtualization.nix
     ../common-modules/app/steam.nix
     ../common-modules/hardware/kernel.nix # Kernel config
-    ../common-modules/security/blocklist.nix # Blocklist of known bad hosts
-    ../common-modules/security/doas.nix # Use doas instead of sudo to reduce complexity
     ../common-modules/security/firewall.nix # Common firewall config, this might need to be moved
     ../common-modules/security/gpg.nix
     ../common-modules/security/sops-nix.nix
     ../common-modules/security/sshd.nix
     ../laptop-modules/hardware/bluetooth.nix #hardware config for bluetooth
     ../laptop-modules/hardware/opengl.nix
-    ../laptop-modules/hardware/power.nix # Power management
-    ../laptop-modules/hardware/printing.nix
     ../laptop-modules/style/stylix.nix
     ../laptop-modules/wm/hyprland.nix
     ../laptop-modules/wm/gnome.nix
@@ -47,7 +43,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Kernel modules
-  boot.kernelModules = ["i2c-dev" "i2c-piix4" "cpufreq_powersave"];
+  # boot.kernelModules = ["i2c-dev" "i2c-piix4" "cpufreq_powersave"];
 
   # Timezone and locale
   time.timeZone = timezone; # time zone
@@ -66,7 +62,6 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    cryptsetup
     git
     home-manager
     nftables
