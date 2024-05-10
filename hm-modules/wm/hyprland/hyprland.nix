@@ -33,7 +33,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
-      #  (pkgs.callPackage ./hyprbars.nix { inherit hyprland-plugins; } )
     ];
     settings = {
       master = {

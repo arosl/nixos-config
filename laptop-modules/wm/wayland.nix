@@ -18,7 +18,7 @@
     enable = true;
     xkb = {
       layout = "us";
-      variant = "intl";
+      variant = "mac";
       options = "caps:escape";
     };
     displayManager.gdm = {

@@ -35,9 +35,11 @@
   nix = {
     # Ensure nix flakes are enabled
     package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    extraOptions = ''experimental-features = nix-command flakes'';
+    settings =  {
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    };
   };
   # I'm sorry Stallman
   nixpkgs.config.allowUnfree = true;
