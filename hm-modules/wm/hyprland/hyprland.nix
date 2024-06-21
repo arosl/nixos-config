@@ -63,9 +63,9 @@
 
         general {
           layout = master 
-          cursor_inactive_timeout = 30
+          # cursor_inactive_timeout = 30
           border_size = 4
-          no_cursor_warps = false
+          # no_cursor_warps = false
           col.active_border = 0xff''
       + config.lib.stylix.colors.base08
       + ''

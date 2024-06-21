@@ -13,7 +13,11 @@
   editor,
   term,
   ...
-}: {
+}:
+let
+  customPkgs = import ../../hm-modules/pkgs/custom-packages.nix { inherit pkgs; };
+in
+{
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
 
@@ -69,6 +73,12 @@
       git
       manix
       restic
+      rclone
+      rbw
+
+      #Custom packages 
+      customPkgs.deco
+      customPkgs.mnemo-tools # provides mnemofetch
 
       # Office
       libreoffice-fresh
@@ -83,20 +93,24 @@
       filezilla
       mosh
       ipcalc
-
+      nmap  
+      spice
+      
       #chat
       telegram-desktop
       mattermost-desktop
+      matterhorn
       element-desktop-wayland
       whatsapp-for-linux
       signal-desktop
       discord
 
       #diving
-      # deco
-      # mnemo-tools
       subsurface
       # qgis
+      ghostscript
+      poppler_utils #pdfunite
+
 
       #misc
       tldr
@@ -109,6 +123,11 @@
 
       #Photo
       darktable
+      exiftags
+      exiflooter
+      exifprobe
+      exiftool
+      exif
 
       # Various dev packages
       texinfo
@@ -118,7 +137,7 @@
       nodejs_20
       sqlite
       cargo
-      beekeeper-studio
+      # beekeeper-studio
       opencv
 
       # Media

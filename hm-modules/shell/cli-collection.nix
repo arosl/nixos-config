@@ -30,6 +30,7 @@
     lolcat
     moreutils
     octave
+    openssl
     pandoc
     pciutils
     ripgrep
