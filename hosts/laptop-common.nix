@@ -45,8 +45,6 @@
   # I'm sorry Stallman
   nixpkgs.config.allowUnfree = true;
 
-  # Kernel modules
-  # boot.kernelModules = ["i2c-dev" "i2c-piix4" "cpufreq_powersave"];
 
   # Timezone and locale
   time.timeZone = timezone; # time zone
