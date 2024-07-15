@@ -12,7 +12,7 @@
     inconsolata
     inconsolata-nerdfont
     iosevka
-    powerline
+    # powerline
     powerline-fonts
     terminus_font
     ubuntu_font_family

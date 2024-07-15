@@ -46,7 +46,7 @@
       #3d printing
       prusa-slicer
       # super-slicer
-      cura
+      # cura
 
       #chat
       telegram-desktop

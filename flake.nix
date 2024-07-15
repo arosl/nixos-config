@@ -63,7 +63,7 @@
           inherit (inputs) stylix;
           inherit (inputs) hyprland-plugins;
           username = "andreas";
-          browser = "qutebrowser"; # Default browser;
+          browser = "chromium"; # Default browser;
           editor = "nvim"; # Default editor;
           email = "andreas@ros.land"; # email (used for certain configurations)
           font = "Intel One Mono"; # Selected font
@@ -207,4 +207,3 @@
     };
   };
 }
-
