@@ -70,6 +70,7 @@
     vim
     wget
     zsh
+    nix-output-monitor
   ];
 
   # I use zsh btw

@@ -20,7 +20,7 @@
       gnome-photos
       gnome-tour
     ])
-    ++ (with pkgs.gnome; [
+    ++ (with pkgs; [
       cheese # webcam tool
       gnome-music
       gnome-terminal

@@ -14,4 +14,5 @@
     autoPrune.enable = true;
   };
   users.users.${username}.extraGroups = ["docker"];
+  environment.systemPackages = [pkgs.docker-compose];
 }

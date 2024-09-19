@@ -312,7 +312,7 @@
     #hyprpaper
     #wofi
     fuzzel
-    keepmenu
+    # keepmenu
     (pyprland.overrideAttrs (oldAttrs: {
       src = fetchFromGitHub {
         owner = "hyprland-community";

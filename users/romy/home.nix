@@ -55,10 +55,10 @@
       libreoffice-fresh
       mate.atril
       glib
-      gnome.nautilus
-      gnome.gnome-calendar
-      gnome.seahorse
-      gnome.gnome-maps
+      nautilus
+      gnome-calendar
+      seahorse
+      gnome-maps
 
       # Media
       # gimp-with-plugins

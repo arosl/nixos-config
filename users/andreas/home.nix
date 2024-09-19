@@ -24,8 +24,8 @@ in
   imports = [
     stylix.homeManagerModules.stylix
     ../../hm-modules/app/browser/chromium.nix # Chromium
-    ../../hm-modules/app/browser/qutebrowser.nix # qutebrowser
-    ../../hm-modules/app/chat/weechat.nix #weechat matrix overlay
+    # ../../hm-modules/app/browser/qutebrowser.nix # qutebrowser
+    # ../../hm-modules/app/chat/weechat.nix #weechat matrix overlay
     ../../hm-modules/app/editor/helix/helix.nix # helix editor
     ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
@@ -67,7 +67,7 @@ in
       zsh
       nh
       alacritty
-      qutebrowser
+      # qutebrowser
       dmenu
       rofi
       git
@@ -84,10 +84,10 @@ in
       libreoffice-fresh
       mate.atril
       glib
-      gnome.nautilus
-      gnome.gnome-calendar
-      gnome.seahorse
-      gnome.gnome-maps
+      nautilus
+      gnome-calendar
+      seahorse
+      gnome-maps
 
       #work
       filezilla
@@ -95,6 +95,7 @@ in
       ipcalc
       nmap  
       spice
+      remmina
       
       #chat
       telegram-desktop
@@ -103,7 +104,7 @@ in
       element-desktop-wayland
       whatsapp-for-linux
       signal-desktop
-      discord
+      # discord
 
       #diving
       subsurface
@@ -123,7 +124,6 @@ in
 
       #Photo
       darktable
-      exiftags
       exiflooter
       exifprobe
       exiftool
@@ -141,7 +141,7 @@ in
       opencv
 
       # Media
-      gimp-with-plugins
+      # gimp-with-plugins
       inkscape
       pinta
       krita
