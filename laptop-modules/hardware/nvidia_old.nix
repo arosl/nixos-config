@@ -30,6 +30,4 @@
       };
     };
   };
-  # enable nivida for hyprland
-  programs.hyprland.enableNvidiaPatches = true;
 }

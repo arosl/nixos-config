@@ -30,7 +30,7 @@ in
     ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
     ../../hm-modules/app/email/neomutt.nix #neomutt email client
-    # ../../hm-modules/app/email/mbsync.nix #mbsync of email
+     ../../hm-modules/app/email/mbsync.nix #mbsync of email
     ../../hm-modules/app/flatpak/flatpak.nix # Flatpaks
     ../../hm-modules/app/git/git.nix # My git config
     # ../../hm-modules/app/pwmanager/bitwarden.nix # install bitwarden
