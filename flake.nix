@@ -37,28 +37,29 @@
     };
 
     # Configure lib
-    lib = nixpkgs.lib;
+    inherit (nixpkgs) lib;
+
   in {
     homeConfigurations = {
       andreas = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [./users/andreas/home.nix];
         extraSpecialArgs = {
+          inherit (inputs) hyprland-plugins;
+          inherit (inputs) stylix;
+          inherit browser;
+          inherit editor;
+          inherit email;
+          inherit font;
+          inherit fontPkg;
+          inherit name;
+          inherit spawnEditor; 
+          inherit term;
           inherit theme;
           inherit timezone;
-          inherit (inputs) stylix;
-          inherit (inputs) hyprland-plugins;
-          username = "andreas";
-          browser = "chromium";
-          editor = "nvim";
-          email = "andreas@ros.land";
-          font = "Intel One Mono";
-          fontPkg = pkgs.intel-one-mono;
-          name = "Andreas";
-          spawnEditor = "nvim";
-          term = "alacritty";
-          wm = "hyprland";
-          wmType = "wayland";
+          inherit username;
+          inherit wm;
+          inherit wmType;
         };
       };
 
@@ -66,20 +67,20 @@
         inherit pkgs;
         modules = [./users/romy/home.nix];
         extraSpecialArgs = {
+          username = "romy";
+          email = "romy@ros.land";
+          name = "Romy";
+          wm = "gnome";
+          inherit (inputs) hyprland-plugins;
+          inherit (inputs) stylix;
+          inherit editor;
+          inherit font;
+          inherit fontPkg;
+          inherit spawnEditor;
+          inherit term;
           inherit theme;
           inherit timezone;
-          inherit (inputs) stylix;
-          inherit (inputs) hyprland-plugins;
-          username = "romy";
-          editor = "nvim";
-          email = "";
-          font = "Intel One Mono";
-          fontPkg = pkgs.intel-one-mono;
-          name = "romy";
-          spawnEditor = "nvim";
-          term = "alacritty";
-          wm = "gnome";
-          wmType = "wayland";
+          inherit wmType;
         };
       };
     };
@@ -97,18 +98,18 @@
         ];
         specialArgs = {
           hostname = "phantom";
-          inherit username;
-          inherit name;
-          inherit timezone;
-          inherit locale;
-          inherit theme;
+          inherit (inputs) blocklist-hosts;
+          inherit (inputs) stylix;
           inherit font;
           inherit fontPkg;
-          inherit wm;
+          inherit locale;
+          inherit name;
           inherit sops-nix;
           inherit sshkey_public;
-          inherit (inputs) stylix;
-          inherit (inputs) blocklist-hosts;
+          inherit theme;
+          inherit timezone;
+          inherit username;
+          inherit wm;
         };
       };
 
@@ -124,25 +125,27 @@
         ];
         specialArgs = {
           hostname = "hypoxic";
-          inherit username;
-          inherit name;
-          inherit timezone;
-          inherit locale;
-          inherit theme;
+          inherit (inputs) blocklist-hosts;
+          inherit (inputs) stylix;
           inherit font;
           inherit fontPkg;
-          inherit wm;
+          inherit locale;
+          inherit name;
           inherit sops-nix;
           inherit sshkey_public;
-          inherit (inputs) stylix;
-          inherit (inputs) blocklist-hosts;
+          inherit theme;
+          inherit timezone;
+          inherit username;
+          inherit wm;
         };
       };
     };
   };
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "nixpkgs/nixos-unstable";
+    };
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
