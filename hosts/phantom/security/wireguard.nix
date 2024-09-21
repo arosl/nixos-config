@@ -25,25 +25,23 @@
         };
         wireguardPeers = [
           {
-            wireguardPeerConfig = {
-              PublicKey = "NcjDKFH7CEJg8PXbxZQTQmFXlax9x8+ao1/ZNXU0Rno=";
-              AllowedIPs = [
-                "10.0.0.0/10"
-                "178.255.144.0/24"
-                "91.220.196.0/24"
-                "185.226.148.0/22"
-                "193.58.250.0/24"
-                "91.247.228.0/22"
-                "195.35.109.0/24"
-                "91.229.142.0/23"
-                "195.43.63.34/32"
-                "158.38.179.0/24"
-                "158.39.52.0/24"
-                "78.91.120.0/24"
-                "151.252.14.100/32"
-              ];
-              Endpoint = "178.255.144.49:1199";
-            };
+            PublicKey = "NcjDKFH7CEJg8PXbxZQTQmFXlax9x8+ao1/ZNXU0Rno=";
+            AllowedIPs = [
+              "10.0.0.0/10"
+              "178.255.144.0/24"
+              "91.220.196.0/24"
+              "185.226.148.0/22"
+              "193.58.250.0/24"
+              "91.247.228.0/22"
+              "195.35.109.0/24"
+              "91.229.142.0/23"
+              "195.43.63.34/32"
+              "158.38.179.0/24"
+              "158.39.52.0/24"
+              "78.91.120.0/24"
+              "151.252.14.100/32"
+            ];
+            Endpoint = "178.255.144.49:1199";
           }
         ];
       };
@@ -61,40 +59,40 @@
       };
       routes = [
         {
-          routeConfig.Destination = "10.0.0.0/10";
+          Destination = "10.0.0.0/10";
         }
         {
-          routeConfig.Destination = "91.220.196.0/24";
+          Destination = "91.220.196.0/24";
         }
         {
-          routeConfig.Destination = "185.226.148.0/22";
+          Destination = "185.226.148.0/22";
         }
         {
-          routeConfig.Destination = "193.58.250.0/24";
+          Destination = "193.58.250.0/24";
         }
         {
-          routeConfig.Destination = "91.247.228.0/22";
+          Destination = "91.247.228.0/22";
         }
         {
-          routeConfig.Destination = "195.35.109.0/24";
+          Destination = "195.35.109.0/24";
         }
         {
-          routeConfig.Destination = "91.229.142.0/23";
+          Destination = "91.229.142.0/23";
         }
         {
-          routeConfig.Destination = "195.43.63.34/32";
+          Destination = "195.43.63.34/32";
         }
         {
-          routeConfig.Destination = "158.38.179.0/24";
+          Destination = "158.38.179.0/24";
         }
         {
-          routeConfig.Destination = "158.39.52.0/24";
+          Destination = "158.39.52.0/24";
         }
         {
-          routeConfig.Destination = "78.91.120.0/24";
+          Destination = "78.91.120.0/24";
         }
         {
-          routeConfig.Destination = "151.252.14.100/32";
+          Destination = "151.252.14.100/32";
         }
       ];
     };
