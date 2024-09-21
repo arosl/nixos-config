@@ -5,7 +5,6 @@
 }: let
   # My shell aliases
   myAliases = {
-    # ll = "eza --icons -l -T -L=1";
     cat = "bat --plain";
     htop = "btm";
     fd = "fd -Lu";
@@ -18,7 +17,6 @@ in {
     eza = {
       enable = true;
       icons = true;
-      # extraOptions = [];
     };
 
     zsh = {
