@@ -20,6 +20,7 @@
     # ../common-modules/app/virtualization.nix
     ../common-modules/app/docker.nix
     ../common-modules/app/steam.nix
+    ../common-modules/app/sh.nix
     ../common-modules/hardware/kernel.nix # Kernel config
     ../common-modules/security/firewall.nix # Common firewall config, this might need to be moved
     ../common-modules/security/gpg.nix
@@ -65,6 +66,7 @@
   environment.systemPackages = with pkgs; [
     git
     home-manager
+    nh
     nftables
     sops
     vim
