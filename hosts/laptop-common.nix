@@ -20,7 +20,7 @@
     # ../common-modules/app/virtualization.nix
     ../common-modules/app/docker.nix
     ../common-modules/app/steam.nix
-    ../common-modules/app/sh.nix
+#    ../common-modules/app/sh.nix
     ../common-modules/hardware/kernel.nix # Kernel config
     ../common-modules/security/firewall.nix # Common firewall config, this might need to be moved
     ../common-modules/security/gpg.nix
@@ -31,6 +31,7 @@
     ../laptop-modules/style/stylix.nix
     ../laptop-modules/wm/hyprland.nix
     ../laptop-modules/wm/gnome.nix
+    ../laptop-modules/wm/dbus.nix
   ];
 
   # Fix nix path
@@ -65,7 +66,10 @@
   # System packages
   environment.systemPackages = with pkgs; [
     git
+    eza
+    bat
     home-manager
+    man
     nh
     nftables
     sops

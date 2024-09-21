@@ -52,7 +52,7 @@
     romy = {
       isNormalUser = true;
       description = "Romy";
-      extraGroups = ["networkmanager"];
+      extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [];
       uid = 1001;
     };
