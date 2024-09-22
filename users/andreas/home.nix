@@ -12,6 +12,7 @@
   browser,
   editor,
   term,
+  sops-nix,
   ...
 }:
 let
@@ -23,14 +24,16 @@ in
 
   imports = [
     stylix.homeManagerModules.stylix
+    sops-nix.homeManagerModules.sops
     ../../hm-modules/app/browser/chromium.nix # Chromium
     # ../../hm-modules/app/browser/qutebrowser.nix # qutebrowser
     # ../../hm-modules/app/chat/weechat.nix #weechat matrix overlay
     ../../hm-modules/app/editor/helix/helix.nix # helix editor
     ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
-    ../../hm-modules/app/email/neomutt.nix #neomutt email client
-     ../../hm-modules/app/email/mbsync.nix #mbsync of email
+    #  ../../hm-modules/app/email/neomutt.nix #neomutt email client
+    # ../../hm-modules/app/email/mbsync.nix #mbsync of email
+    # ../../hm-modules/app/email/email.nix # email config
     ../../hm-modules/app/flatpak/flatpak.nix # Flatpaks
     ../../hm-modules/app/git/git.nix # My git config
     # ../../hm-modules/app/pwmanager/bitwarden.nix # install bitwarden

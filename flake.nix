@@ -38,7 +38,6 @@
 
     # Configure lib
     inherit (nixpkgs) lib;
-
   in {
     homeConfigurations = {
       andreas = home-manager.lib.homeManagerConfiguration {
@@ -47,13 +46,14 @@
         extraSpecialArgs = {
           inherit (inputs) hyprland-plugins;
           inherit (inputs) stylix;
+          inherit (inputs) sops-nix;
           inherit browser;
           inherit editor;
           inherit email;
           inherit font;
           inherit fontPkg;
           inherit name;
-          inherit spawnEditor; 
+          inherit spawnEditor;
           inherit term;
           inherit theme;
           inherit timezone;
@@ -122,6 +122,14 @@
           }
           # Include the hardware module for hypoxic
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4
+          #cosmic desktop
+          {
+            nix.settings = {
+              substituters = ["https://cosmic.cachix.org/"];
+              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+            };
+          }
+          inputs.nixos-cosmic.nixosModules.default
         ];
         specialArgs = {
           hostname = "hypoxic";
@@ -147,14 +155,25 @@
       url = "nixpkgs/nixos-unstable";
     };
 
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    alejandra.url = "github:kamadorueda/alejandra";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    alejandra = {
+      url = "github:kamadorueda/alejandra";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix.url = "github:danth/stylix";
 
@@ -168,8 +187,6 @@
       flake = false;
     };
 
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware";
-    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 }
