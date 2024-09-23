@@ -1,6 +1,50 @@
 {
   description = "Flake of Andreas";
 
+  inputs = {
+    nixpkgs = {
+      url = "nixpkgs/nixos-unstable";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    alejandra = {
+      url = "github:kamadorueda/alejandra";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:danth/stylix";
+    };
+
+    blocklist-hosts = {
+      url = "github:StevenBlack/hosts";
+      flake = false;
+    };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      flake = false;
+    };
+
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+    };
+  };
+
   outputs = {
     nixpkgs,
     home-manager,
@@ -41,23 +85,20 @@
     # Helper function to apply DRY to nixosConfigurations
     mkNixosLaptop = {
       hostname,
-      hardwareModule,
       hostConfigPath,
+      additionalModules ? [],
       ...
     }:
       lib.nixosSystem {
         inherit system;
         modules = [
-          #Hosts configuration.nix file
+          # Host-specific configuration
           hostConfigPath
 
-          #Alway install alejandra linter
+          # Always install alejandra linter
           {
             environment.systemPackages = [alejandra.defaultPackage.${system}];
           }
-
-          # Include the hardware module if defined
-          (if hardwareModule != null then hardwareModule else null)
 
           # Cosmic Desktop Settings
           {
@@ -68,11 +109,10 @@
           }
           inputs.nixos-cosmic.nixosModules.default
 
-        ];
+        ] ++ additionalModules; # option to add different modules per host.
         specialArgs = {
-          inherit hostname;
           inherit (inputs) blocklist-hosts stylix sops-nix;
-          inherit font fontPkg locale name sshkey_public theme timezone username wm;
+          inherit hostname font fontPkg locale name sshkey_public theme timezone username wm;
         };
       };
   in {
@@ -103,56 +143,16 @@
     nixosConfigurations = {
       phantom = mkNixosLaptop {
         hostname = "phantom";
-        hardwareModule = inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480;
         hostConfigPath = ./hosts/phantom/configuration.nix;
+        additionalModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480 ];
       };
 
       hypoxic = mkNixosLaptop {
         hostname = "hypoxic";
-        hardwareModule = inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4;
         hostConfigPath = ./hosts/hypoxic/configuration.nix;
+        additionalModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4 ];
       };
 
     };
-  };
-
-  inputs = {
-    nixpkgs = {
-      url = "nixpkgs/nixos-unstable";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    alejandra = {
-      url = "github:kamadorueda/alejandra";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stylix.url = "github:danth/stylix";
-
-    blocklist-hosts = {
-      url = "github:StevenBlack/hosts";
-      flake = false;
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      flake = false;
-    };
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 }
