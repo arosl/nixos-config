@@ -95,6 +95,14 @@
           }
           # Include the hardware module for phantom
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+          #cosmic desktop
+          {
+            nix.settings = {
+              substituters = ["https://cosmic.cachix.org/"];
+              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+            };
+          }
+          inputs.nixos-cosmic.nixosModules.default
         ];
         specialArgs = {
           hostname = "phantom";
