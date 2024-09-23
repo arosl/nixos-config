@@ -91,28 +91,40 @@
     }:
       lib.nixosSystem {
         inherit system;
-        modules = [
-          # Host-specific configuration
-          hostConfigPath
+        modules =
+          [
+            # Host-specific configuration
+            hostConfigPath
 
-          # Always install alejandra linter
-          {
-            environment.systemPackages = [alejandra.defaultPackage.${system}];
-          }
+            # Always install alejandra linter
+            {
+              environment.systemPackages = [alejandra.defaultPackage.${system}];
+            }
 
-          # Cosmic Desktop Settings
-          {
-            nix.settings = {
-              substituters = ["https://cosmic.cachix.org/"];
-              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-            };
-          }
-          inputs.nixos-cosmic.nixosModules.default
-
-        ] ++ additionalModules; # option to add different modules per host.
+            # Cosmic Desktop Settings
+            {
+              nix.settings = {
+                substituters = ["https://cosmic.cachix.org/"];
+                trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+              };
+            }
+            inputs.nixos-cosmic.nixosModules.default
+          ]
+          ++ additionalModules; # option to add different modules per host.
         specialArgs = {
           inherit (inputs) blocklist-hosts stylix sops-nix;
-          inherit hostname font fontPkg locale name sshkey_public theme timezone username wm;
+          inherit
+            font
+            fontPkg
+            hostname
+            locale
+            name
+            sshkey_public
+            theme
+            timezone
+            username
+            wm
+            ;
         };
       };
   in {
@@ -122,7 +134,21 @@
         modules = [./users/andreas/home.nix];
         extraSpecialArgs = {
           inherit (inputs) hyprland-plugins stylix sops-nix;
-          inherit browser editor email font fontPkg name spawnEditor term theme timezone username wm wmType;
+          inherit
+            browser
+            editor
+            email
+            font
+            fontPkg
+            name
+            spawnEditor
+            term
+            theme
+            timezone
+            username
+            wm
+            wmType
+            ;
         };
       };
 
@@ -135,7 +161,16 @@
           name = "Romy";
           wm = "gnome";
           inherit (inputs) hyprland-plugins stylix;
-          inherit editor font fontPkg spawnEditor term theme timezone wmType;
+          inherit
+            editor
+            font
+            fontPkg
+            spawnEditor
+            term
+            theme
+            timezone
+            wmType
+            ;
         };
       };
     };
@@ -144,15 +179,14 @@
       phantom = mkNixosLaptop {
         hostname = "phantom";
         hostConfigPath = ./hosts/phantom/configuration.nix;
-        additionalModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480 ];
+        additionalModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480];
       };
 
       hypoxic = mkNixosLaptop {
         hostname = "hypoxic";
         hostConfigPath = ./hosts/hypoxic/configuration.nix;
-        additionalModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4 ];
+        additionalModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4];
       };
-
     };
   };
 }
