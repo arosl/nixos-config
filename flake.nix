@@ -5,7 +5,6 @@
     nixpkgs,
     home-manager,
     alejandra,
-    sops-nix,
     ...
   } @ inputs: let
     # ---- SYSTEM SETTINGS ---- #
@@ -38,28 +37,52 @@
 
     # Configure lib
     inherit (nixpkgs) lib;
+
+    # Helper function to apply DRY to nixosConfigurations
+    mkNixosLaptop = {
+      hostname,
+      hardwareModule,
+      hostConfigPath,
+      ...
+    }:
+      lib.nixosSystem {
+        inherit system;
+        modules = [
+          #Hosts configuration.nix file
+          hostConfigPath
+
+          #Alway install alejandra linter
+          {
+            environment.systemPackages = [alejandra.defaultPackage.${system}];
+          }
+
+          # Include the hardware module if defined
+          (if hardwareModule != null then hardwareModule else null)
+
+          # Cosmic Desktop Settings
+          {
+            nix.settings = {
+              substituters = ["https://cosmic.cachix.org/"];
+              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+            };
+          }
+          inputs.nixos-cosmic.nixosModules.default
+
+        ];
+        specialArgs = {
+          inherit hostname;
+          inherit (inputs) blocklist-hosts stylix sops-nix;
+          inherit font fontPkg locale name sshkey_public theme timezone username wm;
+        };
+      };
   in {
     homeConfigurations = {
       andreas = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [./users/andreas/home.nix];
         extraSpecialArgs = {
-          inherit (inputs) hyprland-plugins;
-          inherit (inputs) stylix;
-          inherit (inputs) sops-nix;
-          inherit browser;
-          inherit editor;
-          inherit email;
-          inherit font;
-          inherit fontPkg;
-          inherit name;
-          inherit spawnEditor;
-          inherit term;
-          inherit theme;
-          inherit timezone;
-          inherit username;
-          inherit wm;
-          inherit wmType;
+          inherit (inputs) hyprland-plugins stylix sops-nix;
+          inherit browser editor email font fontPkg name spawnEditor term theme timezone username wm wmType;
         };
       };
 
@@ -71,90 +94,25 @@
           email = "romy@ros.land";
           name = "Romy";
           wm = "gnome";
-          inherit (inputs) hyprland-plugins;
-          inherit (inputs) stylix;
-          inherit editor;
-          inherit font;
-          inherit fontPkg;
-          inherit spawnEditor;
-          inherit term;
-          inherit theme;
-          inherit timezone;
-          inherit wmType;
+          inherit (inputs) hyprland-plugins stylix;
+          inherit editor font fontPkg spawnEditor term theme timezone wmType;
         };
       };
     };
 
     nixosConfigurations = {
-      phantom = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/phantom/configuration.nix
-          {
-            environment.systemPackages = [alejandra.defaultPackage.${system}];
-          }
-          # Include the hardware module for phantom
-          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
-          #cosmic desktop
-          {
-            nix.settings = {
-              substituters = ["https://cosmic.cachix.org/"];
-              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-            };
-          }
-          inputs.nixos-cosmic.nixosModules.default
-        ];
-        specialArgs = {
-          hostname = "phantom";
-          inherit (inputs) blocklist-hosts;
-          inherit (inputs) stylix;
-          inherit font;
-          inherit fontPkg;
-          inherit locale;
-          inherit name;
-          inherit sops-nix;
-          inherit sshkey_public;
-          inherit theme;
-          inherit timezone;
-          inherit username;
-          inherit wm;
-        };
+      phantom = mkNixosLaptop {
+        hostname = "phantom";
+        hardwareModule = inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480;
+        hostConfigPath = ./hosts/phantom/configuration.nix;
       };
 
-      hypoxic = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/hypoxic/configuration.nix
-          {
-            environment.systemPackages = [alejandra.defaultPackage.${system}];
-          }
-          # Include the hardware module for hypoxic
-          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4
-          #cosmic desktop
-          {
-            nix.settings = {
-              substituters = ["https://cosmic.cachix.org/"];
-              trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-            };
-          }
-          inputs.nixos-cosmic.nixosModules.default
-        ];
-        specialArgs = {
-          hostname = "hypoxic";
-          inherit (inputs) blocklist-hosts;
-          inherit (inputs) stylix;
-          inherit font;
-          inherit fontPkg;
-          inherit locale;
-          inherit name;
-          inherit sops-nix;
-          inherit sshkey_public;
-          inherit theme;
-          inherit timezone;
-          inherit username;
-          inherit wm;
-        };
+      hypoxic = mkNixosLaptop {
+        hostname = "hypoxic";
+        hardwareModule = inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4;
+        hostConfigPath = ./hosts/hypoxic/configuration.nix;
       };
+
     };
   };
 
