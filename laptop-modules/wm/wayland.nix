@@ -21,9 +21,5 @@
       variant = "mac";
       options = "caps:escape";
     };
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
   };
 }

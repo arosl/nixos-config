@@ -30,9 +30,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-  
   # Networking
   networking = {
     hostName = hostname; # Define your hostname.
@@ -45,7 +42,7 @@
 
   # User account
   users.users = {
-  andreas = {
+    andreas = {
       isNormalUser = true;
       description = "Andreas";
       extraGroups = ["networkmanager" "wheel" "dialout"];

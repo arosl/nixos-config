@@ -4,15 +4,11 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./gdm.nix
+  ];
   services = {
-    xserver = {
-      enable = true;
-      displayManager.gdm ={ 
-        enable = true;
-        wayland = true;
-      };
-      desktopManager.gnome.enable = true;
-    };
+    xserver.desktopManager.gnome.enable = true;
   };
 
   environment.gnome.excludePackages =
@@ -32,7 +28,7 @@
       hitori # sudoku game
       atomix # puzzle game
     ]);
-  
+
   environment.systemPackages = with pkgs; [
     gnomeExtensions.pop-shell
     ulauncher

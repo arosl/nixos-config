@@ -32,6 +32,7 @@
     ../laptop-modules/wm/hyprland.nix
     ../laptop-modules/wm/gnome.nix
     ../laptop-modules/wm/dbus.nix
+    ../laptop-modules/wm/cosmicdm.nix
   ];
 
   # Fix nix path
