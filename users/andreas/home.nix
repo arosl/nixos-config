@@ -107,6 +107,7 @@ in
       element-desktop-wayland
       whatsapp-for-linux
       signal-desktop
+      zoom
       # discord
 
       #diving
