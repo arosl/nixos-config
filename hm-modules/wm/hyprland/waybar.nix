@@ -105,7 +105,7 @@
     style = ''
       * {
           /* `otf-font-awesome` is required to be installed for icons */
-          font-family: Font Awesome 6 Free, ${font};
+          font-family: 'Font Awesome 6 Free', ${font};
                 font-size: 20px;
             }
 
