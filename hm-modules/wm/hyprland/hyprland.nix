@@ -8,7 +8,13 @@
   ...
 }: {
   imports = [
-    ./waybar.nix
+    ./waybar.nix # Status bar
+    ./fuzzel.nix # Lancher
+    ./fnott.nix # Notifications
+    (import ../../app/dmenu-scripts/networkmanager-dmenu.nix {
+      dmenu_command = "fuzzel -d";
+      inherit config lib pkgs;
+    }) # wifi menu
   ];
 
   wayland.windowManager.hyprland = {
@@ -66,6 +72,7 @@
         "ALTSHIFT,TAB,cyclenext,prev"
         "ALTSHIFT,TAB,bringactivetotop"
         "$mod,P,layoutmsg,swapwithmaster master"
+        "$mod,I,exec,networkmanager_dmenu"
 
         "$mod,Q,killactive"
         "SUPERSHIFT,Q,exit"
@@ -147,27 +154,6 @@
   #External software used with hyprland
   home.packages = with pkgs; [
     wl-clipboard
-    fnott
     font-awesome
   ];
-  programs.fuzzel.enable = true;
-  programs.fuzzel.settings = {
-    main = {
-      font = font + ":size=13";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
-    };
-    colors = {
-      background = "${config.lib.stylix.colors.base00}e6";
-      text = "${config.lib.stylix.colors.base07}ff";
-      match = "${config.lib.stylix.colors.base05}ff";
-      selection = "${config.lib.stylix.colors.base08}ff";
-      selection-text = "${config.lib.stylix.colors.base00}ff";
-      selection-match = "${config.lib.stylix.colors.base05}ff";
-      border = "${config.lib.stylix.colors.base08}ff";
-    };
-    border = {
-      width = 3;
-      radius = 7;
-    };
-  };
 }

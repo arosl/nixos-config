@@ -15,12 +15,53 @@
         position = "top";
         height = 35;
         margin = "7 7 3 7";
-        # width = 1280;
         spacing = 2;
 
-        modules-left = ["battery" "backlight" "pulseaudio" "cpu" "memory"];
+        modules-left = ["custom/os" "battery" "backlight" "pulseaudio" "cpu" "memory"];
         modules-center = ["hyprland/workspaces"];
         modules-right = ["idle_inhibitor" "tray" "clock"];
+
+        "custom/os" = {
+          "format" = " {} ";
+          "exec" = ''echo "" '';
+          "interval" = "once";
+        };
+        battery = {
+          "states" = {
+            "good" = 95;
+            "warning" = 30;
+            "critical" = 15;
+          };
+          "format" = "{capacity}% {icon}";
+          "format-charging" = "{capacity}% ";
+          "format-plugged" = "{capacity}% ";
+          "format-icons" = ["" "" "" "" ""];
+        };
+        backlight = {
+          "format" = "{percent}% {icon}";
+          "format-icons" = ["" "" "" "" "" "" "" "" ""];
+        };
+        pulseaudio = {
+          "scroll-step" = 1;
+          "format" = "{volume}% {icon}  {format_source}";
+          "format-bluetooth" = "{volume}% {icon}  {format_source}";
+          "format-bluetooth-muted" = "󰸈 {icon}  {format_source}";
+          "format-muted" = "󰸈 {format_source}";
+          "format-source" = "{volume}% ";
+          "format-source-muted" = " ";
+          "format-icons" = {
+            "headphone" = "";
+            "hands-free" = "";
+            "headset" = "";
+            "phone" = "";
+            "portable" = "";
+            "car" = "";
+            "default" = ["" "" ""];
+          };
+          "on-click" = "pypr toggle pavucontrol && hyprctl dispatch bringactivetotop";
+        };
+        cpu = {"format" = "{usage}% ";};
+        memory = {"format" = "{}% ";};
 
         "hyprland/workspaces" = {
           "format" = "{icon}";
@@ -51,54 +92,16 @@
           };
         };
         tray = {
-          #"icon-size" = 21;
+          "icon-size" = 21;
           "spacing" = 10;
         };
         clock = {
           "interval" = 1;
-          "format" = "{:%a %Y-%m-%d %H:%M:%S}";
+          "format" = "{:%a %Y-%m-%d %H: %M: %S}";
           "timezone" = timezone;
           "tooltip-format" = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
-        };
-        cpu = {
-          "format" = "{usage}% ";
-        };
-        memory = {"format" = "{}% ";};
-        backlight = {
-          "format" = "{percent}% {icon}";
-          "format-icons" = ["" "" "" "" "" "" "" "" ""];
-        };
-        battery = {
-          "states" = {
-            "good" = 95;
-            "warning" = 30;
-            "critical" = 15;
-          };
-          "format" = "{capacity}% {icon}";
-          "format-charging" = "{capacity}% ";
-          "format-plugged" = "{capacity}% ";
-          "format-icons" = ["" "" "" "" ""];
-        };
-        pulseaudio = {
-          "scroll-step" = 1;
-          "format" = "{volume}% {icon}  {format_source}";
-          "format-bluetooth" = "{volume}% {icon}  {format_source}";
-          "format-bluetooth-muted" = "󰸈 {icon}  {format_source}";
-          "format-muted" = "󰸈 {format_source}";
-          "format-source" = "{volume}% ";
-          "format-source-muted" = " ";
-          "format-icons" = {
-            "headphone" = "";
-            "hands-free" = "";
-            "headset" = "";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = ["" "" ""];
-          };
-          "on-click" = "pypr toggle pavucontrol && hyprctl dispatch bringactivetotop";
         };
       };
     };
