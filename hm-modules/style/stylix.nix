@@ -119,7 +119,7 @@ in {
     + ''
     '';
   home.packages = with pkgs; [
-    qt5ct
+    pkgs.libsForQt5.qt5ct
     pkgs.libsForQt5.breeze-qt5
   ];
   home.sessionVariables = {

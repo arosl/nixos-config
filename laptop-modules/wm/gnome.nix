@@ -8,7 +8,7 @@
     ./gdm.nix
   ];
   services = {
-    xserver.desktopManager.gnome.enable = true;
+    xserver.desktopManager.gnome.enable = false;
   };
 
   environment.gnome.excludePackages =

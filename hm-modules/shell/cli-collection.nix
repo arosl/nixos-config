@@ -11,7 +11,7 @@
     bat
     bottom
     brightnessctl
-    cava
+    #cava
     cowsay
     dig
     fastfetch
