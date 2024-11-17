@@ -48,7 +48,7 @@ in
     ../../hm-modules/shell/cli-collection.nix # Useful CLI apps
     ../../hm-modules/shell/sh.nix # My zsh and bash config
     ../../hm-modules/style/stylix.nix # Styling and themes for my apps
-    ../../hm-modules/wm/hyprland/hyprland.nix #window manager config
+    ../../hm-modules/wm/hyprland/hyprland_new.nix #window manager config
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -70,7 +70,8 @@ in
       zsh
       nh
       alacritty
-      # qutebrowser
+      qutebrowser
+      brave
       dmenu
       rofi
       git
