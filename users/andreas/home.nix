@@ -14,11 +14,9 @@
   term,
   sops-nix,
   ...
-}:
-let
-  customPkgs = import ../../hm-modules/pkgs/custom-packages.nix { inherit pkgs; };
-in
-{
+}: let
+  customPkgs = import ../../hm-modules/pkgs/custom-packages.nix {inherit pkgs;};
+in {
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
 
@@ -48,7 +46,7 @@ in
     ../../hm-modules/shell/cli-collection.nix # Useful CLI apps
     ../../hm-modules/shell/sh.nix # My zsh and bash config
     ../../hm-modules/style/stylix.nix # Styling and themes for my apps
-    ../../hm-modules/wm/hyprland/hyprland_new.nix #window manager config
+    ../../hm-modules/wm/hyprland/hyprland.nix #window manager config
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -80,7 +78,7 @@ in
       rclone
       rbw
 
-      #Custom packages 
+      #Custom packages
       customPkgs.deco
       customPkgs.mnemo-tools # provides mnemofetch
 
@@ -97,10 +95,10 @@ in
       filezilla
       mosh
       ipcalc
-      nmap  
+      nmap
       spice
       remmina
-      
+
       #chat
       telegram-desktop
       mattermost-desktop
@@ -116,7 +114,6 @@ in
       # qgis
       ghostscript
       poppler_utils #pdfunite
-
 
       #misc
       tldr
