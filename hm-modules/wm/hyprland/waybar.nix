@@ -134,10 +134,6 @@
                 border: none;
             }
 
-            #custom-hyprprofile {
-                color: #${config.lib.stylix.colors.base0D};
-            }
-
             /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
             button:hover {
                 background: inherit;

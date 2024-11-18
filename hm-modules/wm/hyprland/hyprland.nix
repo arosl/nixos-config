@@ -11,10 +11,12 @@
     ./waybar.nix # Status bar
     ./fuzzel.nix # Lancher
     ./fnott.nix # Notifications
+    ./pyprland.nix # pyprland config
     (import ../../app/dmenu-scripts/networkmanager-dmenu.nix {
       dmenu_command = "fuzzel -d";
       inherit config lib pkgs;
     }) # wifi menu
+    ../../app/ranger/ranger.nix # ranger config
   ];
 
   wayland.windowManager.hyprland = {
@@ -27,6 +29,10 @@
         "nm-applet"
         "blueman-applet"
         "waybar"
+        "pypr"
+      ];
+      exec = [
+        "${pkgs.swaybg}/bin/swaybg -m fill -i /nix/store/aixnra3apbslq615qqg9rmif7xkxyn8a-vector-forest-sunset-forest-sunset-forest-wallpaper-b3abc35d0d699b056fa6b247589b18a8.jpg-"
       ];
 
       #define mod key
@@ -51,21 +57,26 @@
       ];
 
       bind = [
-        #launcher
+        #launcher win+;
         "$mod,code:47,exec,fuzzel"
 
         #Shortcuts
         "$mod,T,exec,alacritty"
 
+        #Scratchpads
+        "$mod,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
+        "$mod,F,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
+        "$mod,B,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
+
         #Screenshots
         ",code:107,exec,${pkgs.grim}/bin/grim -g | ${pkgs.slurp}/bin/slurp"
         "SHIFT,code:107,exec,${pkgs.grim}/bin/grim -g | ${pkgs.slurp}/bin/slurp - o"
         "SUPER,code:107,exec,${pkgs.grim}/bin/grim"
-        "CTRL,code:107,exec,${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/slurp - |${pkgs.wl-clipboard}/bin/wl-copy"
+        "CTRL,code:107,exec,${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/slurp - | ${pkgs.wl-clipboard}/bin/wl-copy"
         "SHIFTCTRL,code:107,exec,${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/slurp - o - | ${pkgs.wl-clipboard}/bin/wl-copy}"
         "SUPERCTRL,code:107,exec,${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy"
 
-        #interactions
+        #Interactions
         "$mod,SPACE,fullscreen,1"
         "ALT,TAB,cyclenext"
         "ALT,TAB,bringactivetotop"
@@ -117,6 +128,38 @@
         "SUPERSHIFT,9,movetoworkspace,9"
       ];
 
+      windowrulev2 = [
+        # General scratchpad rules
+        "float, class:^(scratchpad)$"
+        "size 80% 85%, class:^(scratchpad)$"
+        "workspace special silent, class:^(scratchpad)$"
+        "center, class:^(scratchpad)$"
+
+        # Geary scratchpad rules
+        "float, class:^(geary)$"
+        "size 80% 85%, class:^(geary)$"
+        "workspace special silent, class:^(geary)$"
+        "center, class:^(geary)$"
+        "opacity 0.85, class:^(geary)$"
+
+        # Pavucontrol scratchpad rules
+        # "float, class:^(pavucontrol)$"
+        # "size 86% 40%, class:^(pavucontrol)$"
+        # "move 50% 6%, class:^(pavucontrol)$"
+        # "workspace special silent, class:^(pavucontrol)$"
+        # "opacity 0.80, class:^(pavucontrol)$"
+
+        # Opacity rules for specific apps
+        "opacity 0.80, title:ORUI"
+        "opacity 0.80, title:Heimdall"
+        "opacity 0.80, title:^(LibreWolf)$"
+        "opacity 0.80, title:^(New Tab - LibreWolf)$"
+        "opacity 0.60, title:^(New Tab - Brave)$"
+        "opacity 0.65, title:^(Home - qutebrowser)$"
+        "opacity 0.65, title:\\[.*\\] - Home"
+        # "opacity 0.75, class:^(org.gnome.Nautilus)$"
+      ];
+
       input = {
         kb_layout = "us";
         kb_options = "ctrl:nocaps";
@@ -153,6 +196,8 @@
 
   #External software used with hyprland
   home.packages = with pkgs; [
+    xdg-utils
+    xdg-desktop-portal-hyprland
     wl-clipboard
     font-awesome
   ];
