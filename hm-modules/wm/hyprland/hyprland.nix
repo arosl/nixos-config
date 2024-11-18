@@ -60,8 +60,10 @@
         #launcher win+;
         "$mod,code:47,exec,fuzzel"
 
-        #Shortcuts
-        "$mod,T,exec,alacritty"
+        # Launch Alacritty on the current workspace with $mod+T,  with modified class label
+        "$mod,T,exec,alacritty --class modTAlacritty"
+        # Default behavior for other Alacritty windows
+        "SUPERSHIFT,T,exec,alacritty"
 
         #Scratchpads
         "$mod,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
@@ -149,12 +151,27 @@
         # "workspace special silent, class:^(pavucontrol)$"
         # "opacity 0.80, class:^(pavucontrol)$"
 
+        # Move editors to workspace 1 when they opens
+        "workspace 1, class:^(Code)$"
+        "workspace 1, class:^(Alacritty)$, title:^(nvim .*)$"
+        "workspace 1, class:^(Alacritty)$, title:^(hx .*)$"
+
+        # Move Browsers to workspace 2 when they opens
+        "workspace 2, class:^(Brave-browser)$"
+        "workspace 2, class:^(Chromium-browser)$"
+        "workspace 2, class:^(org.qutebrowser.qutebrowser)$"
+
+        "workspace 3, class:^(Alacritty)$"
+
+        # Move Filezilla to workspace 7 when it opens
+        "workspace 7, class:^(filezilla)$"
+
+        # Move Mattermost to workspace 9 when it opens
+        "workspace 9, class:^(Mattermost)$"
+
         # Opacity rules for specific apps
-        "opacity 0.80, title:ORUI"
         "opacity 0.80, title:Heimdall"
-        "opacity 0.80, title:^(LibreWolf)$"
-        "opacity 0.80, title:^(New Tab - LibreWolf)$"
-        "opacity 0.60, title:^(New Tab - Brave)$"
+        "opacity 0.75, title:^(New Tab - Brave)$"
         "opacity 0.65, title:^(Home - qutebrowser)$"
         "opacity 0.65, title:\\[.*\\] - Home"
         # "opacity 0.75, class:^(org.gnome.Nautilus)$"
