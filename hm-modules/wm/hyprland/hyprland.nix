@@ -67,7 +67,7 @@
 
         #Scratchpads
         "$mod,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
-        "$mod,F,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
+        "$mod,R,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
         "$mod,B,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
 
         #Screenshots
@@ -86,6 +86,7 @@
         "ALTSHIFT,TAB,bringactivetotop"
         "$mod,P,layoutmsg,swapwithmaster master"
         "$mod,I,exec,networkmanager_dmenu"
+        "$mod,F,exec,hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"
 
         "$mod,Q,killactive"
         "SUPERSHIFT,Q,exit"
@@ -161,10 +162,18 @@
         "workspace 2, class:^(Chromium-browser)$"
         "workspace 2, class:^(org.qutebrowser.qutebrowser)$"
 
+        # Normal terminals on workspace 3
         "workspace 3, class:^(Alacritty)$"
+
+        # Move chat to workspace 4 when they opens
+        "workspace 4, class:^(whatsapp-for-linux)$"
+        "workspace 4, class:^(org.telegram.desktop)$"
 
         # Move Filezilla to workspace 7 when it opens
         "workspace 7, class:^(filezilla)$"
+
+        # Move remmina to workspace 8 when it opens
+        "workspace 8, class:^(org.remmina.Remmina)$"
 
         # Move Mattermost to workspace 9 when it opens
         "workspace 9, class:^(Mattermost)$"
