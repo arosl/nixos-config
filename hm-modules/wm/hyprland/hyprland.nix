@@ -70,13 +70,15 @@
         "$mod,R,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
         "$mod,B,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
 
+
         #Screenshots
-        ",code:107,exec,${pkgs.grim}/bin/grim -g | ${pkgs.slurp}/bin/slurp"
-        "SHIFT,code:107,exec,${pkgs.grim}/bin/grim -g | ${pkgs.slurp}/bin/slurp - o"
-        "SUPER,code:107,exec,${pkgs.grim}/bin/grim"
-        "CTRL,code:107,exec,${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/slurp - | ${pkgs.wl-clipboard}/bin/wl-copy"
-        "SHIFTCTRL,code:107,exec,${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/slurp - o - | ${pkgs.wl-clipboard}/bin/wl-copy}"
-        "SUPERCTRL,code:107,exec,${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy"
+        ",code:107,exec,hyprshot -m region" # 1. Default Screenshot with User Selection (Region)
+        "SHIFT,code:107,exec,hyprshot -m window -m active" # 2. Shift + Print Screen to Capture Active Window
+        "SUPER,code:107,exec,hyprshot -m output -m eDP-1" # 3. Super + Print Screen to Capture Full Monitor
+        "CTRL,code:107,exec,hyprshot -m region --clipboard-only" # 4. Ctrl + Print Screen to Capture Region and Copy to Clipboard
+        "SHIFTCTRL,code:107,exec,hyprshot -m window -m active --clipboard-only" # 5. Shift + Ctrl + Print Screen to Capture Active Window and Copy to Clipboard
+        "SUPERCTRL,code:107,exec,hyprshot -m output -m eDP-1 --clipboard-only" # 6. Super + Ctrl + Print Screen to Capture Full Monitor and Copy to Clipboard
+
 
         #Interactions
         "$mod,SPACE,fullscreen,1"
@@ -226,5 +228,6 @@
     xdg-desktop-portal-hyprland
     wl-clipboard
     font-awesome
+    hyprshot
   ];
 }
