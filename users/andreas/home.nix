@@ -83,7 +83,7 @@ in {
       customPkgs.mnemo-tools # provides mnemofetch
 
       # Office
-      libreoffice-fresh
+      libreoffice
       mate.atril
       glib
       nautilus
