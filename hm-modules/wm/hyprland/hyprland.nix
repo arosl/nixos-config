@@ -241,7 +241,8 @@
 
     input-field = [
       {
-        size = "350, 70";
+        placeholder_text = "<i>Password or FP ...</i>";
+        size = "550, 70";
         position = "0, 0";
         monitor = "";
         dots_center = true;
@@ -251,6 +252,19 @@
         outer_color = "rgb(24, 25, 38)";
         outline_thickness = 5;
         shadow_passes = 2;
+      }
+    ];
+
+    label = [
+      {
+        monitor = "";
+        text = "$TIME Hi there, $DESC.";
+        text_align = "center";
+        color = "rgba(200, 200, 200, 1.0)";
+        font_size = 25;
+        position = "0, 160";
+        halign = "center";
+        valign = "center";
       }
     ];
   };

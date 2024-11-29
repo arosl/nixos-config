@@ -19,11 +19,17 @@
     #      '';
     #    };
     # pam.services.gtklock = {};
-    pam.services.hyprlock = {};
-    pam.services.login.enableGnomeKeyring = true;
+    pam.services ={
+      hyprlock = {};
+      hyprlock.fprintAuth = true ;
+      login.enableGnomeKeyring = true;
+    };
   };
 
-  services.gnome.gnome-keyring.enable = true;
+  services = {
+    gnome.gnome-keyring.enable = true;
+    fprintd.enable = true;
+  };
 
   programs = {
     hyprland = {
@@ -31,7 +37,7 @@
       xwayland = {
         enable = true;
       };
-      # portalPackage = pkgs.xdg-desktop-portal-hyprland;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
   };
 }
