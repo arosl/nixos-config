@@ -229,6 +229,8 @@
       grace = 300;
       hide_cursor = true;
       no_fade_in = false;
+      enable_fingerprint = true;
+      fingerprint_ready_message = "fprint ready";
     };
 
     background = [
@@ -244,7 +246,6 @@
         placeholder_text = "<i>Password or FP ...</i>";
         size = "550, 70";
         position = "0, 0";
-        monitor = "";
         dots_center = true;
         fade_on_empty = false;
         font_color = "rgb(202, 211, 245)";
@@ -257,12 +258,11 @@
 
     label = [
       {
-        monitor = "";
-        text = "$TIME Hi there, $DESC.";
+        text = "$TIME<br/>Hi there, $DESC.";
         text_align = "center";
         color = "rgba(200, 200, 200, 1.0)";
         font_size = 25;
-        position = "0, 160";
+        position = "0, 120";
         halign = "center";
         valign = "center";
       }
