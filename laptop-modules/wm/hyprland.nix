@@ -18,7 +18,8 @@
     #        auth include login
     #      '';
     #    };
-    pam.services.gtklock = {};
+    # pam.services.gtklock = {};
+    pam.services.hyprlock = {};
     pam.services.login.enableGnomeKeyring = true;
   };
 

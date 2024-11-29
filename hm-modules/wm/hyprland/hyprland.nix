@@ -70,7 +70,6 @@
         "$mod,R,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
         "$mod,B,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
 
-
         #Screenshots
         ",code:107,exec,hyprshot -m region" # 1. Default Screenshot with User Selection (Region)
         "SHIFT,code:107,exec,hyprshot -m window -m active" # 2. Shift + Print Screen to Capture Active Window
@@ -78,7 +77,6 @@
         "CTRL,code:107,exec,hyprshot -m region --clipboard-only" # 4. Ctrl + Print Screen to Capture Region and Copy to Clipboard
         "SHIFTCTRL,code:107,exec,hyprshot -m window -m active --clipboard-only" # 5. Shift + Ctrl + Print Screen to Capture Active Window and Copy to Clipboard
         "SUPERCTRL,code:107,exec,hyprshot -m output -m eDP-1 --clipboard-only" # 6. Super + Ctrl + Print Screen to Capture Full Monitor and Copy to Clipboard
-
 
         #Interactions
         "$mod,SPACE,fullscreen,1"
@@ -89,6 +87,7 @@
         "$mod,P,layoutmsg,swapwithmaster master"
         "$mod,I,exec,networkmanager_dmenu"
         "$mod,F,exec,hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"
+        "SUPERSHIFT,RETURN,exec,hyprlock --immediate"
 
         "$mod,Q,killactive"
         "SUPERSHIFT,Q,exit"
@@ -220,6 +219,62 @@
       then "Quintom_Ink"
       else "Quintom_Snow";
     size = 36;
+  };
+
+  #Lockscreen
+  programs.hyprlock.enable = true;
+  programs.hyprlock.settings = {
+    general = {
+      disable_loading_bar = true;
+      grace = 300;
+      hide_cursor = true;
+      no_fade_in = false;
+    };
+
+    background = [
+      {
+        path = "screenshot";
+        blur_passes = 3;
+        blur_size = 8;
+      }
+    ];
+
+    input-field = [
+      {
+        size = "350, 70";
+        position = "0, 0";
+        monitor = "";
+        dots_center = true;
+        fade_on_empty = false;
+        font_color = "rgb(202, 211, 245)";
+        inner_color = "rgb(91, 96, 120)";
+        outer_color = "rgb(24, 25, 38)";
+        outline_thickness = 5;
+        shadow_passes = 2;
+      }
+    ];
+  };
+
+  #Idle management
+  services.hypridle.enable = true;
+  services.hypridle.settings = {
+    general = {
+      after_sleep_cmd = "hyprctl dispatch dpms on";
+      ignore_dbus_inhibit = false;
+      lock_cmd = "hyprlock";
+    };
+
+    listener = [
+      {
+        timeout = 600;
+        on-timeout = "hyprlock";
+      }
+      {
+        timeout = 1200;
+        on-timeout = "hyprctl dispatch dpms off";
+        on-resume = "hyprctl dispatch dpms on";
+      }
+    ];
   };
 
   #External software used with hyprland
