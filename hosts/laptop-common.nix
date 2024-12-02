@@ -94,6 +94,15 @@
   services = {
     flatpak.enable = true;
     tailscale.enable = true;
+    printing = {
+      enable = true;
+      browsing = true;
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
   };
 
   fonts.fontDir.enable = true;

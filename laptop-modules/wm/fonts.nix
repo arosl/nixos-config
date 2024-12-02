@@ -3,16 +3,14 @@
   pkgs,
   ...
 }: {
-  # Fonts are nice to have
   fonts.packages = with pkgs; [
-    # Fonts
-    (nerdfonts.override {fonts = ["Inconsolata" "Mononoki"];})
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.inconsolata
+    nerd-fonts.mononoki
     font-awesome
     google-fonts
-    inconsolata
-    inconsolata-nerdfont
     iosevka
-    # powerline
+    powerline
     powerline-fonts
     terminus_font
     ubuntu_font_family
