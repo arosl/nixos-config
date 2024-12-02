@@ -152,6 +152,7 @@ in {
       yt-dlp
       ffmpeg
       movit
+      wf-recorder
       mediainfo
       libmediainfo
       mediainfo-gui

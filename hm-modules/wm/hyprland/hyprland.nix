@@ -64,6 +64,7 @@
         "$mod,T,exec,alacritty --class modTAlacritty"
         # Default behavior for other Alacritty windows
         "SUPERSHIFT,T,exec,alacritty"
+        "SUPERSHIFT,B,exec,brave"
 
         #Scratchpads
         "$mod,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
@@ -152,6 +153,8 @@
         # "move 50% 6%, class:^(pavucontrol)$"
         # "workspace special silent, class:^(pavucontrol)$"
         # "opacity 0.80, class:^(pavucontrol)$"
+
+        "minsize 20%, floating:1"
 
         # Move editors to workspace 1 when they opens
         "workspace 1, class:^(Code)$"
