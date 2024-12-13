@@ -8,7 +8,7 @@
     enable = true;
 
     settings = {
-      theme = theme;
+      theme = "catppuccin_mocha";
       editor = {
         line-number = "relative";
       };
