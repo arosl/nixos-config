@@ -18,7 +18,7 @@
 }: {
   imports = [
     # ../common-modules/app/virtualization.nix
-    ../common-modules/app/docker.nix
+    # ../common-modules/app/docker.nix
     ../common-modules/app/steam.nix
 #    ../common-modules/app/sh.nix
     ../common-modules/hardware/kernel.nix # Kernel config
@@ -62,6 +62,21 @@
     LC_PAPER = locale;
     LC_TELEPHONE = locale;
     LC_TIME = locale;
+  };
+
+  boot = {
+    # blacklistedKernelModules = [ "nvidia" ];
+    initrd.systemd.enable = true;
+    # plymouth = {
+    #   enable = true;
+    #   theme = "loader";
+    #   themePackages = with pkgs; [
+    #     # By default we would install all themes
+    #     (adi1090x-plymouth-themes.override {
+    #       selected_themes = [ "loader" ];
+    #     })
+    #   ];
+    # };
   };
 
   # System packages
