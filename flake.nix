@@ -43,10 +43,15 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
   };
 
   outputs = {
     nixpkgs,
+    catppuccin,
     home-manager,
     alejandra,
     ...
@@ -108,9 +113,15 @@
                 trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
               };
             }
+
+            # Cosmic module
             inputs.nixos-cosmic.nixosModules.default
+
+            # Catppuccin NixOS module
+            inputs.catppuccin.nixosModules.catppuccin
           ]
           ++ additionalModules; # option to add different modules per host.
+
         specialArgs = {
           inherit (inputs) blocklist-hosts stylix sops-nix;
           inherit
@@ -131,7 +142,10 @@
     homeConfigurations = {
       andreas = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./users/andreas/home.nix];
+        modules = [
+          ./users/andreas/home.nix
+          inputs.catppuccin.homeManagerModules.catppuccin
+        ];
         extraSpecialArgs = {
           inherit (inputs) hyprland-plugins stylix sops-nix;
           inherit
@@ -154,7 +168,10 @@
 
       romy = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./users/romy/home.nix];
+        modules = [
+          ./users/romy/home.nix
+          # inputs.catppuccin.homeManagerModules.catppuccin
+        ];
         extraSpecialArgs = {
           username = "romy";
           email = "romy@ros.land";

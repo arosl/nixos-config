@@ -25,11 +25,12 @@ in {
       # amirha.better-comments-2
       # dracula-theme.theme-dracula
       # myPuppetVscode
+      catppuccin.catppuccin-vsc
       bbenoist.nix
       dotenv.dotenv-vscode
       esbenp.prettier-vscode
       golang.go
-      jdinhlife.gruvbox
+      # jdinhlife.gruvbox
       kamadorueda.alejandra
       # ms-python.python
       ms-python.vscode-pylance

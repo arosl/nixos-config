@@ -20,6 +20,10 @@ in {
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
 
+  qt.platformTheme.name = "kvantum";
+  catppuccin.enable = true;
+  programs.lazygit.catppuccin.enable = true;
+
   imports = [
     stylix.homeManagerModules.stylix
     sops-nix.homeManagerModules.sops
@@ -70,6 +74,7 @@ in {
       alacritty
       qutebrowser
       brave
+      browsh
       dmenu
       rofi
       git

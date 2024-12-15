@@ -79,6 +79,9 @@
     # };
   };
 
+  catppuccin.enable = true ;
+
+
   # System packages
   environment.systemPackages = with pkgs; [
     git

@@ -121,19 +121,20 @@ in {
   home.packages = with pkgs; [
     pkgs.libsForQt5.qt5ct
     pkgs.libsForQt5.breeze-qt5
+
   ];
   home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "kvantum";
   };
   programs.zsh.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "kvantum";
   };
   programs.bash.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "kvantum";
   };
   qt = {
     enable = true;
     style.package = pkgs.libsForQt5.breeze-qt5;
-    style.name = "breeze-dark";
+    style.name = "kvantum";
   };
 }
