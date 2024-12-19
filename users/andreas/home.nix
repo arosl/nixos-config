@@ -72,9 +72,7 @@ in {
       zsh
       nh
       alacritty
-      qutebrowser
       brave
-      browsh
       dmenu
       rofi
       git
@@ -82,6 +80,15 @@ in {
       restic
       rclone
       rbw
+
+      #misc
+      tldr
+      magic-wormhole
+      qutebrowser
+      browsh
+      yazi
+      foot
+      wezterm
 
       #Custom packages
       customPkgs.deco
@@ -120,11 +127,6 @@ in {
       ghostscript
       poppler_utils #pdfunite
 
-      #misc
-      tldr
-      disfetch
-      magic-wormhole
-
       #Astro
       stellarium
       siril
@@ -144,7 +146,7 @@ in {
       nodejs_20
       sqlite
       cargo
-      # beekeeper-studio
+      beekeeper-studio
       opencv
 
       # Media
