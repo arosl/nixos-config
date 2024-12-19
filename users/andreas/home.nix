@@ -22,7 +22,7 @@ in {
 
   qt.platformTheme.name = "kvantum";
   catppuccin.enable = true;
-  programs.lazygit.catppuccin.enable = true;
+  catppuccin.lazygit.enable = true;
 
   imports = [
     stylix.homeManagerModules.stylix
@@ -164,6 +164,7 @@ in {
       libmediainfo
       mediainfo-gui
       audio-recorder
+      vocal
     ];
   };
 
