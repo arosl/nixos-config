@@ -15,15 +15,16 @@
     lua-language-server
     lua54Packages.luacheck
     nixd
-    nodePackages_latest.typescript-language-server 
+    nodePackages_latest.typescript-language-server
     nodePackages_latest.bash-language-server
     nodePackages_latest.fixjson
     prettierd
     pyright
-    python311Packages.black
-    python311Packages.flake8
+    python313Packages.flake8
     statix
     stylua
     vscode-langservers-extracted
+    black
+    rust-analyzer
   ];
 }

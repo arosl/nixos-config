@@ -67,7 +67,6 @@
       lsp = {
         rust-analyzer = {
           binary = {
-            #                        path = lib.getExe pkgs.rust-analyzer;
             path_lookup = true;
           };
         };
@@ -78,7 +77,6 @@
             };
           };
         };
-
         elixir-ls = {
           binary = {
             path_lookup = true;
@@ -87,10 +85,25 @@
             dialyzerEnabled = true;
           };
         };
+        pyright = {
+          binary = {
+            path_lookup = true;
+          };
+        };
+        gopls = {
+          binary = {
+            path_lookup = true;
+          };
+        };
+        bash-language-server = {
+          binary = {
+            path_lookup = true;
+          };
+        };
       };
 
       languages = {
-        "Elixir" = {
+        Elixir = {
           language_servers = ["!lexical" "elixir-ls" "!next-ls"];
           format_on_save = {
             external = {
@@ -99,7 +112,7 @@
             };
           };
         };
-        "HEEX" = {
+        HEEX = {
           language_servers = ["!lexical" "elixir-ls" "!next-ls"];
           format_on_save = {
             external = {
@@ -107,13 +120,40 @@
               arguments = ["format" "--stdin-filename" "{buffer_path}" "-"];
             };
           };
-          "Nix" = {
-            language_servers = ["nixd" "!nil"];
-            format_on_save = {
-              external = {
-                command = "alejandra";
-                arguments = ["-qq" "{buffer_path}" "-"];
-              };
+        };
+        Nix = {
+          language_servers = ["nixd" "!nil"];
+          format_on_save = {
+            external = {
+              command = "alejandra";
+              arguments = ["-qq" "{buffer_path}" "-"];
+            };
+          };
+        };
+        Python = {
+          language_servers = ["pyright"];
+          format_on_save = {
+            external = {
+              command = "black";
+              arguments = ["-"];
+            };
+          };
+        };
+        Golang = {
+          language_servers = ["gopls"];
+          format_on_save = {
+            external = {
+              command = "gofmt";
+              arguments = ["-w" "{buffer_path}"];
+            };
+          };
+        };
+        Rust = {
+          language_servers = ["rust-analyzer"];
+          format_on_save = {
+            external = {
+              command = "rustfmt";
+              arguments = ["--emit=stdout"];
             };
           };
         };

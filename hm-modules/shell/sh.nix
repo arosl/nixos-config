@@ -12,6 +12,7 @@
     man = "batman";
     nixos-rebuild = "systemd-run --no-ask-password --uid=0 --system --scope -p MemoryLimit=16000M -p CPUQuota=60% nixos-rebuild";
     open = "xdg-open";
+    zed = "zeditor";
   };
 in {
   programs = {
