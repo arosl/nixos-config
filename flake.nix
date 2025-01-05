@@ -5,45 +5,36 @@
     nixpkgs = {
       url = "nixpkgs/nixos-unstable";
     };
-
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     alejandra = {
       url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     stylix = {
       url = "github:danth/stylix";
     };
-
     blocklist-hosts = {
       url = "github:StevenBlack/hosts";
       flake = false;
     };
-
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       flake = false;
     };
-
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
-
     catppuccin = {
       url = "github:catppuccin/nix";
     };
