@@ -1,11 +1,11 @@
 {
   pkgs,
-  config,
   ...
 }: {
   home.packages = with pkgs; [
     ansible-language-server
     ansible-lint
+    black
     efm-langserver
     emmet-ls
     eslint_d
@@ -15,16 +15,15 @@
     lua-language-server
     lua54Packages.luacheck
     nixd
-    nodePackages_latest.typescript-language-server
     nodePackages_latest.bash-language-server
     nodePackages_latest.fixjson
+    nodePackages_latest.typescript-language-server
     prettierd
     pyright
-    python313Packages.flake8
+    python3Packages.flake8
+    rust-analyzer
     statix
     stylua
     vscode-langservers-extracted
-    black
-    rust-analyzer
   ];
 }

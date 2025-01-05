@@ -1,11 +1,22 @@
 {
   pkgs,
   lib,
+
+  conifg,
   ...
 }: {
   programs.zed-editor = {
     enable = true;
-    extensions = ["nix" "toml" "elixir" "make" "python"];
+    extensions = [
+      "catppuccin"
+      "elixir"
+      "git-firefly"
+      "make"
+      "nix"
+      "python"
+      "toml"
+      "rainbow-csv"
+    ];
 
     ## everything inside of these brackets are Zed options.
     userSettings = {
@@ -67,19 +78,22 @@
       lsp = {
         rust-analyzer = {
           binary = {
-            path_lookup = true;
+            path_lookup = pkgs.rust-analyzer;
           };
         };
         nixd = {
           settings = {
             diagnostic = {
-              suppress = ["sema-extra-with"];
+              suppress = [
+                # "sema-extra-with"
+                "sema-unused-def-lambda-noarg-formal"
+              ];
             };
           };
         };
         elixir-ls = {
           binary = {
-            path_lookup = true;
+            path_lookup = pkgs.elixir-ls;
           };
           settings = {
             dialyzerEnabled = true;
@@ -87,17 +101,17 @@
         };
         pyright = {
           binary = {
-            path_lookup = true;
+            path_lookup = pkgs.pyright;
           };
         };
         gopls = {
           binary = {
-            path_lookup = true;
+            path_lookup = pkgs.gopls;
           };
         };
         bash-language-server = {
           binary = {
-            path_lookup = true;
+            path_lookup = pkgs.nodePackages_latest.bash-language-server;
           };
         };
       };
@@ -126,7 +140,7 @@
           format_on_save = {
             external = {
               command = "alejandra";
-              arguments = ["-qq" "{buffer_path}" "-"];
+              arguments = ["--quiet" "--"];
             };
           };
         };
