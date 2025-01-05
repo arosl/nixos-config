@@ -35,5 +35,5 @@
   ];
 
   services.power-profiles-daemon.enable = false;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 }

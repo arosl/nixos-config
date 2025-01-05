@@ -27,12 +27,14 @@ in {
   imports = [
     stylix.homeManagerModules.stylix
     sops-nix.homeManagerModules.sops
-    ../../hm-modules/app/browser/chromium.nix # Chromium
+    ../../hm-modules/app/browser/brave.nix # Brave
+    ../../hm-modules/app/browser/chromium.nix # chromium
     # ../../hm-modules/app/browser/qutebrowser.nix # qutebrowser
     # ../../hm-modules/app/chat/weechat.nix #weechat matrix overlay
     ../../hm-modules/app/editor/helix/helix.nix # helix editor
     ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
+    ../../hm-modules/app/editor/zeditor/zeditor.nix # zed-editor
     #  ../../hm-modules/app/email/neomutt.nix #neomutt email client
     # ../../hm-modules/app/email/mbsync.nix #mbsync of email
     # ../../hm-modules/app/email/email.nix # email config
@@ -65,6 +67,7 @@ in {
       TERM = term;
       BROWSER = browser;
       FLAKE = "/home/andreas/repos/nixos-config/";
+      NIXOS_OZONE_WL = "1";
     };
 
     packages = with pkgs; [
@@ -72,7 +75,6 @@ in {
       zsh
       nh
       alacritty
-      brave
       dmenu
       rofi
       git
@@ -115,7 +117,7 @@ in {
       telegram-desktop
       mattermost-desktop
       matterhorn
-      element-desktop-wayland
+      element-desktop
       whatsapp-for-linux
       signal-desktop
       zoom

@@ -54,5 +54,6 @@ in {
 
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
+    NIXOS_OZONE_WL = "1";
   };
 }
