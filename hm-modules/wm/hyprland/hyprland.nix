@@ -6,10 +6,10 @@
   timezone,
   inputs,
   ...
-}: {
+}:{
   imports = [
     ./waybar.nix # Status bar
-    ./fuzzel.nix # Lancher
+    ./fuzzel.nix # Launcher
     ./fnott.nix # Notifications
     ./pyprland.nix # pyprland config
     (import ../../app/dmenu-scripts/networkmanager-dmenu.nix {
@@ -23,7 +23,7 @@
     enable = true;
 
     settings = {
-      #statup commands
+      # Startup commands
       exec-once = [
         "hyprctl setcursor ${config.gtk.cursorTheme.name} ${builtins.toString config.gtk.cursorTheme.size}"
         "nm-applet"
@@ -35,7 +35,7 @@
         "${pkgs.swaybg}/bin/swaybg -m fill -i /nix/store/aixnra3apbslq615qqg9rmif7xkxyn8a-vector-forest-sunset-forest-sunset-forest-wallpaper-b3abc35d0d699b056fa6b247589b18a8.jpg-"
       ];
 
-      #define mod key
+      # Define mod key
       "$mod" = "SUPER";
 
       general = {
@@ -51,87 +51,99 @@
         mfact = 0.6;
       };
 
+      # Monitor configuration
+      # eDP-1: Laptop screen, scaled to 2.0.
+      # HDMI-A-2: External screen, scaled to 1.5, auto-positioned to the right of eDP-1.
+      monitor = [
+        "eDP-1,preferred,auto,2"
+        "HDMI-A-2,preferred,auto-right,1.25"
+      ];
+
       bindm = [
         "$mod,mouse:272,movewindow"
         "$mod,mouse:273,resizewindow"
       ];
 
-      bind = [
-        #launcher win+;
-        "$mod,code:47,exec,fuzzel"
+      # Keybinding definitions
+      # bindd: A keybinding format with descriptions for each shortcut.
+      # Syntax: MODS, key, description, dispatcher, params
+      bindd = [
+        # Launcher
+        "$mod,code:47,Open launcher, exec, fuzzel"
 
-        # Launch Alacritty on the current workspace with $mod+T,  with modified class label
-        "$mod,T,exec,alacritty --class modTAlacritty"
-        # Default behavior for other Alacritty windows
-        "SUPERSHIFT,T,exec,alacritty"
-        "SUPERSHIFT,B,exec,brave"
+        # Launch applications
+        "$mod,T,Launch Terminal on current workspace,exec,alacritty --class modTAlacritty"
+        "SUPERSHIFT,T,Launch Terminal on terminal workspace,exec,alacritty"
+        "SUPERSHIFT,B,Launch Brave browser,exec,brave"
 
-        #Scratchpads
-        "$mod,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
-        "$mod,R,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
-        "$mod,B,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
+        # Scratchpads
+        "$mod,Z,Toggle terminal scratchpad,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
+        "$mod,R,Toggle ranger scratchpad,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
+        "$mod,B,Toggle btm scratchpad,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
 
-        #Screenshots
-        ",code:107,exec,hyprshot -m region" # 1. Default Screenshot with User Selection (Region)
-        "SHIFT,code:107,exec,hyprshot -m window -m active" # 2. Shift + Print Screen to Capture Active Window
-        "SUPER,code:107,exec,hyprshot -m output -m eDP-1" # 3. Super + Print Screen to Capture Full Monitor
-        "CTRL,code:107,exec,hyprshot -m region --clipboard-only" # 4. Ctrl + Print Screen to Capture Region and Copy to Clipboard
-        "SHIFTCTRL,code:107,exec,hyprshot -m window -m active --clipboard-only" # 5. Shift + Ctrl + Print Screen to Capture Active Window and Copy to Clipboard
-        "SUPERCTRL,code:107,exec,hyprshot -m output -m eDP-1 --clipboard-only" # 6. Super + Ctrl + Print Screen to Capture Full Monitor and Copy to Clipboard
+        # Screenshots
+        ",code:107,Take screenshot of region,exec,hyprshot -m region"
+        "SHIFT,code:107,Screenshot active window,exec,hyprshot -m window -m active"
+        "SUPER,code:107,Full monitor screenshot,exec,hyprshot -m output -m eDP-1"
+        "CTRL,code:107,Copy region screenshot,exec,hyprshot -m region --clipboard-only"
+        "SHIFTCTRL,code:107,Copy active window screenshot,exec,hyprshot -m window -m active --clipboard-only"
+        "SUPERCTRL,code:107,Copy full monitor screenshot,exec,hyprshot -m output -m eDP-1 --clipboard-only"
 
-        #Interactions
-        "$mod,SPACE,fullscreen,1"
-        "ALT,TAB,cyclenext"
-        "ALT,TAB,bringactivetotop"
-        "ALTSHIFT,TAB,cyclenext,prev"
-        "ALTSHIFT,TAB,bringactivetotop"
-        "$mod,P,layoutmsg,swapwithmaster master"
-        "$mod,I,exec,networkmanager_dmenu"
-        "$mod,F,exec,hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"
-        "SUPERSHIFT,RETURN,exec,hyprlock --immediate"
+        # Window interactions
+        "$mod,SPACE,Toggle fullscreen,fullscreen,1"
+        "ALT,TAB,Switch to next window,cyclenext"
+        "ALTSHIFT,TAB,Switch to previous window,cyclenext,prev"
+        "$mod,P,Swap with master window,layoutmsg,swapwithmaster master"
+        "$mod,F,Toggle floating and center window,exec,hyprctl dispatch togglefloating && hyprctl dispatch centerwindow"
 
-        "$mod,Q,killactive"
-        "SUPERSHIFT,Q,exit"
+        # Lock and exit
+        "SUPERSHIFT,RETURN,Lock screen immediately,exec,hyprlock --immediate"
+        "$mod,Q,Close active window,killactive"
+        "SUPERSHIFT,Q,Exit Hyprland,exit"
 
-        ",code:122,exec,${pkgs.pamixer}/bin/pamixer -d 10"
-        ",code:123,exec,${pkgs.pamixer}/bin/pamixer -i 10"
-        ",code:121,exec,${pkgs.pamixer}/bin/pamixer -t"
-        ",code:256,exec,${pkgs.pamixer}/bin/pamixer --default-source -t"
-        "SHIFT,code:123,exec,${pkgs.pamixer}/bin/pamixer --default-source -i 10"
-        "SHIFT,code:122,exec,${pkgs.pamixer}/bin/pamixer --default-source -d 10"
-        ",code:232,exec,${pkgs.brightnessctl}/bin/brightnessctl set 15-"
-        ",code:233,exec,${pkgs.brightnessctl}/bin/brightnessctl set +15"
+        # Audio and brightness controls
+        ",code:122,Lower volume,exec,${pkgs.pamixer}/bin/pamixer -d 10"
+        ",code:123,Raise volume,exec,${pkgs.pamixer}/bin/pamixer -i 10"
+        ",code:121,Toggle mute,exec,${pkgs.pamixer}/bin/pamixer -t"
+        ",code:256,Toggle microphone mute,exec,${pkgs.pamixer}/bin/pamixer --default-source -t"
+        "SHIFT,code:123,Raise mic volume,exec,${pkgs.pamixer}/bin/pamixer --default-source -i 10"
+        "SHIFT,code:122,Lower mic volume,exec,${pkgs.pamixer}/bin/pamixer --default-source -d 10"
+        ",code:232,Lower brightness,exec,${pkgs.brightnessctl}/bin/brightnessctl set 15-"
+        ",code:233,Raise brightness,exec,${pkgs.brightnessctl}/bin/brightnessctl set +15"
 
-        "$mod,H,movefocus,l"
-        "$mod,J,movefocus,d"
-        "$mod,K,movefocus,u"
-        "$mod,L,movefocus,r"
+        # Focus movement
+        "$mod,H,Move focus left,movefocus,l"
+        "$mod,J,Move focus down,movefocus,d"
+        "$mod,K,Move focus up,movefocus,u"
+        "$mod,L,Move focus right,movefocus,r"
 
-        "SUPERSHIFT,H,movewindow,l"
-        "SUPERSHIFT,J,movewindow,d"
-        "SUPERSHIFT,K,movewindow,u"
-        "SUPERSHIFT,L,movewindow,r"
+        # Window movement
+        "SUPERSHIFT,H,Move window left,movewindow,l"
+        "SUPERSHIFT,J,Move window down,movewindow,d"
+        "SUPERSHIFT,K,Move window up,movewindow,u"
+        "SUPERSHIFT,L,Move window right,movewindow,r"
 
-        "$mod,1,workspace,1"
-        "$mod,2,workspace,2"
-        "$mod,3,workspace,3"
-        "$mod,4,workspace,4"
-        "$mod,5,workspace,5"
-        "$mod,6,workspace,6"
-        "$mod,7,workspace,7"
-        "$mod,8,workspace,8"
-        "$mod,9,workspace,9"
+        # Workspace management
+        "$mod,1,Switch to workspace 1,workspace,1"
+        "$mod,2,Switch to workspace 2,workspace,2"
+        "$mod,3,Switch to workspace 3,workspace,3"
+        "$mod,4,Switch to workspace 4,workspace,4"
+        "$mod,5,Switch to workspace 5,workspace,5"
+        "$mod,6,Switch to workspace 6,workspace,6"
+        "$mod,7,Switch to workspace 7,workspace,7"
+        "$mod,8,Switch to workspace 8,workspace,8"
+        "$mod,9,Switch to workspace 9,workspace,9"
 
-        "SUPERSHIFT,1,movetoworkspace,1"
-        "SUPERSHIFT,2,movetoworkspace,2"
-        "SUPERSHIFT,3,movetoworkspace,3"
-        "SUPERSHIFT,4,movetoworkspace,4"
-        "SUPERSHIFT,5,movetoworkspace,5"
-        "SUPERSHIFT,6,movetoworkspace,6"
-        "SUPERSHIFT,7,movetoworkspace,7"
-        "SUPERSHIFT,8,movetoworkspace,8"
-        "SUPERSHIFT,9,movetoworkspace,9"
-      ];
+        "SUPERSHIFT,1,Move window to workspace 1,movetoworkspace,1"
+        "SUPERSHIFT,2,Move window to workspace 2,movetoworkspace,2"
+        "SUPERSHIFT,3,Move window to workspace 3,movetoworkspace,3"
+        "SUPERSHIFT,4,Move window to workspace 4,movetoworkspace,4"
+        "SUPERSHIFT,5,Move window to workspace 5,movetoworkspace,5"
+        "SUPERSHIFT,6,Move window to workspace 6,movetoworkspace,6"
+        "SUPERSHIFT,7,Move window to workspace 7,movetoworkspace,7"
+        "SUPERSHIFT,8,Move window to workspace 8,movetoworkspace,8"
+        "SUPERSHIFT,9,Move window to workspace 9,movetoworkspace,9"
+     ];
 
       windowrulev2 = [
         # General scratchpad rules
@@ -148,28 +160,27 @@
         "opacity 0.85, class:^(geary)$"
 
         # Pavucontrol scratchpad rules
-        # "float, class:^(pavucontrol)$"
-        # "size 86% 40%, class:^(pavucontrol)$"
-        # "move 50% 6%, class:^(pavucontrol)$"
-        # "workspace special silent, class:^(pavucontrol)$"
-        # "opacity 0.80, class:^(pavucontrol)$"
-
+        "float, class:^(pavucontrol)$"
+        "size 86% 40%, class:^(pavucontrol)$"
+        "move 50% 6%, class:^(pavucontrol)$"
+        "workspace special silent, class:^(pavucontrol)$"
+        "opacity 0.80, class:^(pavucontrol)$"
         "minsize 20%, floating:1"
 
-        # Move editors to workspace 1 when they opens
-        "workspace 1, class:^(Code)$"
-        "workspace 1, class:^(Alacritty)$, title:^(nvim .*)$"
-        "workspace 1, class:^(Alacritty)$, title:^(hx .*)$"
+        # Move Browsers to workspace 2 when they open
+        "workspace 1, class:^(brave-browser)$"
+        "workspace 1, class:^(Chromium-browser)$"
+        "workspace 1, class:^(org.qutebrowser.qutebrowser)$"
 
-        # Move Browsers to workspace 2 when they opens
-        "workspace 2, class:^(Brave-browser)$"
-        "workspace 2, class:^(Chromium-browser)$"
-        "workspace 2, class:^(org.qutebrowser.qutebrowser)$"
+        # Move editors to workspace 1 when they open
+        "workspace 2, class:^(Code)$"
+        "workspace 2, class:^(Alacritty)$, title:^(nvim .*)$"
+        "workspace 2, class:^(Alacritty)$, title:^(hx .*)$"
 
         # Normal terminals on workspace 3
         "workspace 3, class:^(Alacritty)$"
 
-        # Move chat to workspace 4 when they opens
+        # Move chat to workspace 4 when they open
         "workspace 4, class:^(whatsapp-for-linux)$"
         "workspace 4, class:^(org.telegram.desktop)$"
 
@@ -187,7 +198,12 @@
         "opacity 0.75, title:^(New Tab - Brave)$"
         "opacity 0.65, title:^(Home - qutebrowser)$"
         "opacity 0.65, title:\\[.*\\] - Home"
-        # "opacity 0.75, class:^(org.gnome.Nautilus)$"
+
+        # Zed scratchpad floats like the others
+        #"float, class:^(ZedScratch)$"
+        #"size 80% 85%, class:^(ZedScratch)$"
+        #"workspace special silent, class:^(ZedScratch)$"
+        #"center, class:^(ZedScratch)$"
       ];
 
       input = {
@@ -214,7 +230,7 @@
     };
   };
 
-  #External
+  # External
   gtk.cursorTheme = {
     package = pkgs.quintom-cursor-theme;
     name =
@@ -224,7 +240,7 @@
     size = 36;
   };
 
-  #Lockscreen
+  # Lockscreen
   programs.hyprlock.enable = true;
   programs.hyprlock.settings = {
     general = {
@@ -272,7 +288,7 @@
     ];
   };
 
-  #Idle management
+  # Idle management
   services.hypridle.enable = true;
   services.hypridle.settings = {
     general = {
@@ -294,7 +310,7 @@
     ];
   };
 
-  #External software used with hyprland
+  # External software used with hyprland
   home.packages = with pkgs; [
     xdg-utils
     xdg-desktop-portal-hyprland

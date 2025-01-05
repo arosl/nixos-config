@@ -31,5 +31,16 @@
     margin = 50
     lazy = true
 
+    [scratchpads.zed]
+    command = "zeditor"
+    class = "dev.zed.Zed"
+    margin = 50
+    lazy = true
+
+    [scratchpads.pavucontrol]
+    command = "pavucontrol"
+    class = "org.pulseaudio.pavucontrol"
+    margin = 50
+    lazy = true
   '';
 }
