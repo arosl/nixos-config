@@ -30,7 +30,7 @@ in {
     ../../hm-modules/app/browser/brave.nix # Brave
     ../../hm-modules/app/browser/chromium.nix # chromium
     # ../../hm-modules/app/browser/qutebrowser.nix # qutebrowser
-    # ../../hm-modules/app/chat/weechat.nix #weechat matrix overlay
+    ../../hm-modules/app/chat/weechat.nix #weechat matrix overlay
     ../../hm-modules/app/editor/helix/helix.nix # helix editor
     ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
@@ -48,7 +48,7 @@ in {
     ../../hm-modules/hardware/bluetooth.nix # Bluetooth
     ../../hm-modules/lang/lsp-formatters.nix # LSP and formaters availabe
     ../../hm-modules/lang/python/python3.nix # python3
-    # ../../hm-modules/llm/ollama/ollama.nix # Ollama LLM
+    ../../hm-modules/llm/ollama.nix # Ollama LLM
     ../../hm-modules/shell/cli-collection.nix # Useful CLI apps
     ../../hm-modules/shell/sh.nix # My zsh and bash config
     ../../hm-modules/style/stylix.nix # Styling and themes for my apps
