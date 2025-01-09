@@ -13,9 +13,11 @@
       "git-firefly"
       "make"
       "nix"
+      "powershell"
       "python"
       "toml"
       "rainbow-csv"
+      "xml"
     ];
 
     ## everything inside of these brackets are Zed options.
