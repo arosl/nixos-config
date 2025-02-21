@@ -7,8 +7,11 @@
     };
 
     # New input for the wcslib patch PR:
+    # wcslib-patch = {
+    #   url = "github:NixOS/nixpkgs/pull/380492/head";
+    # };
     wcslib-patch = {
-      url = "github:NixOS/nixpkgs/pull/380492/head";
+      url = "nixpkgs/master";
     };
 
     home-manager = {
@@ -100,7 +103,7 @@
 
             # Always install alejandra linter
             {
-              environment.systemPackages = [alejandra.defaultPackage.${system}];
+            #  environment.systemPackages = [alejandra.defaultPackage.${system}];
             }
 
             # Cosmic Desktop Settings
@@ -167,7 +170,7 @@
         inherit pkgs;
         modules = [
           ./users/romy/home.nix
-          # Uncomment the next line if you want to add Catppuccin for Romy:
+          # Add Catppuccin for Romy:
           # inputs.catppuccin.homeManagerModules.catppuccin
         ];
         extraSpecialArgs = {

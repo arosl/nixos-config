@@ -25,10 +25,10 @@
     settings = {
       # Startup commands
       exec-once = [
+        "waybar"
         "hyprctl setcursor ${config.gtk.cursorTheme.name} ${builtins.toString config.gtk.cursorTheme.size}"
         "nm-applet"
         "blueman-applet"
-        "waybar"
         "pypr"
       ];
       exec = [
@@ -80,6 +80,7 @@
         "$mod,Z,Toggle terminal scratchpad,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
         "$mod,R,Toggle ranger scratchpad,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
         "$mod,B,Toggle btm scratchpad,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
+        "$mod,O,Toggle obsidian scratchpad,exec,pypr toggle obs && hyprctl dispatch bringactivetotop"
 
         # Screenshots
         ",code:107,Take screenshot of region,exec,hyprshot -m region"
@@ -167,15 +168,16 @@
         "opacity 0.80, class:^(pavucontrol)$"
         "minsize 20%, floating:1"
 
-        # Move Browsers to workspace 2 when they open
+        # Move Browsers to workspace 1 when they open
         "workspace 1, class:^(brave-browser)$"
         "workspace 1, class:^(Chromium-browser)$"
         "workspace 1, class:^(org.qutebrowser.qutebrowser)$"
 
-        # Move editors to workspace 1 when they open
+        # Move editors to workspace 2 when they open
         "workspace 2, class:^(Code)$"
         "workspace 2, class:^(Alacritty)$, title:^(nvim .*)$"
         "workspace 2, class:^(Alacritty)$, title:^(hx .*)$"
+        "workspace 2, class:^(dev.zed.Zed)$"
 
         # Normal terminals on workspace 3
         "workspace 3, class:^(Alacritty)$"
@@ -199,11 +201,6 @@
         "opacity 0.65, title:^(Home - qutebrowser)$"
         "opacity 0.65, title:\\[.*\\] - Home"
 
-        # Zed scratchpad floats like the others
-        #"float, class:^(ZedScratch)$"
-        #"size 80% 85%, class:^(ZedScratch)$"
-        #"workspace special silent, class:^(ZedScratch)$"
-        #"center, class:^(ZedScratch)$"
       ];
 
       input = {
