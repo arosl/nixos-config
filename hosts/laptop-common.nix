@@ -65,8 +65,8 @@
   };
 
   boot = {
-    # blacklistedKernelModules = [ "nvidia" ];
     initrd.systemd.enable = true;
+    loader.systemd-boot.configurationLimit = 10;
     # plymouth = {
     #   enable = true;
     #   theme = "loader";

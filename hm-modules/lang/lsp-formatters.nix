@@ -7,6 +7,9 @@
     ansible-lint
     black
     efm-langserver
+    elmPackages.elm-language-server
+    elmPackages.elm-format
+    elmPackages.elm-review
     emmet-ls
     eslint_d
     gopls

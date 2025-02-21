@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-
   conifg,
   ...
 }: {
@@ -10,13 +9,16 @@
     extensions = [
       "catppuccin"
       "elixir"
+      "elm"
       "git-firefly"
+      "log"
       "make"
       "nix"
       "powershell"
       "python"
-      "toml"
       "rainbow-csv"
+      "ssh-config"
+      "toml"
       "xml"
     ];
 
@@ -101,6 +103,11 @@
             dialyzerEnabled = true;
           };
         };
+        elm = {
+          binary = {
+            path_lookup = pkgs.elmPackages.elm;
+          };
+        };
         pyright = {
           binary = {
             path_lookup = pkgs.pyright;
@@ -125,6 +132,15 @@
             external = {
               command = "mix";
               arguments = ["format" "--stdin-filename" "{buffer_path}" "-"];
+            };
+          };
+        };
+        Elm = {
+          language_servers = ["elm-language-server"];
+          format_on_save = {
+            external = {
+              command = "elm-format";
+              arguments = ["--stdin" "--elm-version=0.19"];
             };
           };
         };

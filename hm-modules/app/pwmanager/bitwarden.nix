@@ -1,9 +1,13 @@
-{pkgs, ...}: {
-  # Specify the bw packages
-  home.packages = with pkgs; [
-    bitwarden-cli
-    bitwarden-menu
-  ];
-
-  #maybe use sops for more config
+{
+  pkgs,
+  secrets,
+  ...
+}: {
+  programs.rbw = {
+    enable = true;
+    settings = {
+      base_url = secrets.bitwarden.host1.base_url;
+      email = secrets.bitwarden.host1.email;
+    };
+  };
 }

@@ -81,7 +81,7 @@ in {
       manix
       restic
       rclone
-      rbw
+      obsidian
 
       #misc
       tldr

@@ -5,6 +5,12 @@
     nixpkgs = {
       url = "nixpkgs/nixos-unstable";
     };
+
+    # New input for the wcslib patch PR:
+    wcslib-patch = {
+      url = "github:NixOS/nixpkgs/pull/380492/head";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,18 +46,26 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    catppuccin,
-    home-manager,
-    alejandra,
-    ...
-  } @ inputs: let
+  outputs = { nixpkgs, wcslib-patch, catppuccin, home-manager, alejandra, ... } @ inputs: let
     # ---- SYSTEM SETTINGS ---- #
     locale = "en_US.UTF-8";
     sshkey_public = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9WYZgphn4uQ5ZqBkTwbSIk2htGe74EiANdItjgWlrM andreas@ros.land";
     system = "x86_64-linux";
     timezone = "America/Cancun";
+
+    # Configure pkgs with the overlay that overrides wcslib.
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        (final: prev: {
+          # Use legacyPackages because the PR doesn't export "packages"
+          wcslib = (wcslib-patch.legacyPackages.${system}).wcslib;
+        })
+      ];
+    };
 
     # ----- DEFAULT USER SETTINGS ----- #
     browser = "chromium";
@@ -67,18 +81,10 @@
     wm = "hyprland";
     wmType = "wayland";
 
-    # Configure pkgs
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
-
     # Configure lib
     inherit (nixpkgs) lib;
 
-    # Helper function to apply DRY to nixosConfigurations
+    # Helper function to DRY up nixosConfigurations
     mkNixosLaptop = {
       hostname,
       hostConfigPath,
@@ -101,7 +107,9 @@
             {
               nix.settings = {
                 substituters = ["https://cosmic.cachix.org/"];
-                trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+                trusted-public-keys = [
+                  "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+                ];
               };
             }
 
@@ -111,7 +119,7 @@
             # Catppuccin NixOS module
             inputs.catppuccin.nixosModules.catppuccin
           ]
-          ++ additionalModules; # option to add different modules per host.
+          ++ additionalModules; # Option to add different modules per host.
 
         specialArgs = {
           inherit (inputs) blocklist-hosts stylix sops-nix;
@@ -125,8 +133,7 @@
             theme
             timezone
             username
-            wm
-            ;
+            wm;
         };
       };
   in {
@@ -152,8 +159,7 @@
             timezone
             username
             wm
-            wmType
-            ;
+            wmType;
         };
       };
 
@@ -161,6 +167,7 @@
         inherit pkgs;
         modules = [
           ./users/romy/home.nix
+          # Uncomment the next line if you want to add Catppuccin for Romy:
           # inputs.catppuccin.homeManagerModules.catppuccin
         ];
         extraSpecialArgs = {
@@ -177,8 +184,7 @@
             term
             theme
             timezone
-            wmType
-            ;
+            wmType;
         };
       };
     };
@@ -187,13 +193,17 @@
       phantom = mkNixosLaptop {
         hostname = "phantom";
         hostConfigPath = ./hosts/phantom/configuration.nix;
-        additionalModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480];
+        additionalModules = [
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+        ];
       };
 
       hypoxic = mkNixosLaptop {
         hostname = "hypoxic";
         hostConfigPath = ./hosts/hypoxic/configuration.nix;
-        additionalModules = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4];
+        additionalModules = [
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen4
+        ];
       };
     };
   };
