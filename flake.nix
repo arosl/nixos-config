@@ -10,7 +10,7 @@
     # wcslib-patch = {
     #   url = "github:NixOS/nixpkgs/pull/380492/head";
     # };
-    wcslib-patch = {
+    nixpkgs-master = {
       url = "nixpkgs/master";
     };
 
@@ -49,7 +49,7 @@
     };
   };
 
-  outputs = { nixpkgs, wcslib-patch, catppuccin, home-manager, alejandra, ... } @ inputs: let
+  outputs = { nixpkgs, nixpkgs-master, catppuccin, home-manager, alejandra, ... } @ inputs: let
     # ---- SYSTEM SETTINGS ---- #
     locale = "en_US.UTF-8";
     sshkey_public = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK9WYZgphn4uQ5ZqBkTwbSIk2htGe74EiANdItjgWlrM andreas@ros.land";
@@ -65,7 +65,7 @@
       overlays = [
         (final: prev: {
           # Use legacyPackages because the PR doesn't export "packages"
-          wcslib = (wcslib-patch.legacyPackages.${system}).wcslib;
+          wcslib = (nixpkgs-master.legacyPackages.${system}).wcslib;
         })
       ];
     };
