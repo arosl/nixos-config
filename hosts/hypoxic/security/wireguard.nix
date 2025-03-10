@@ -26,7 +26,7 @@
         wireguardPeers = [
           {
             PublicKey = "NcjDKFH7CEJg8PXbxZQTQmFXlax9x8+ao1/ZNXU0Rno=";
-            AllowedIPs = [
+            AllowedIPs = [ # list of IP ranges that will be encrypted and sent and not dropped
               "10.0.0.0/10"
               "178.255.144.0/24"
               "91.220.196.0/24"
@@ -57,7 +57,7 @@
       networkConfig = {
         IPv6AcceptRA = false;
       };
-      routes = [
+      routes = [ # We need to add routes manually for the allowed IPs above
         {
           Destination = "10.0.0.0/10";
         }

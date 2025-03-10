@@ -96,6 +96,7 @@
     wget
     zsh
     nix-output-monitor
+    logiops
   ];
 
   # I use zsh btw

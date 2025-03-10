@@ -91,15 +91,23 @@ in {
       yazi
       foot
       wezterm
+      vial
 
       #Custom packages
       customPkgs.deco
       customPkgs.mnemo-tools # provides mnemofetch
 
+      #3d printing
+      prusa-slicer
+      orca-slicer
+      freecad
+      openscad
+      
       # Office
       libreoffice
       mate.atril
       glib
+      geary
       nautilus
       gnome-calendar
       seahorse
