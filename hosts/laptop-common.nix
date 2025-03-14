@@ -66,6 +66,11 @@
 
   boot = {
     initrd.systemd.enable = true;
+    initrd.services.udev ={
+      packages = with pkgs; [
+        qmk-udev-rules
+      ];
+    };
     loader.systemd-boot.configurationLimit = 10;
     # plymouth = {
     #   enable = true;
@@ -77,6 +82,14 @@
     #     })
     #   ];
     # };
+  };
+
+  nix.optimise.automatic = true;
+  # nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "dayly";
+    options = "--delete-older-than 45d";
   };
 
   catppuccin.enable = true ;
@@ -97,7 +110,10 @@
     zsh
     nix-output-monitor
     logiops
+    bpftools
+    bcc
   ];
+
 
   # I use zsh btw
   environment.shells = with pkgs; [zsh];

@@ -37,6 +37,7 @@
     enableIPv6 = false; #disabled for now as it bypasses wg routes when on ipv6
     hosts = {
       "127.0.0.1" = ["arianesline.com" "arianesline.azurewebsites.net"];
+
     };
   };
 

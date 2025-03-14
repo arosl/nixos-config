@@ -154,11 +154,11 @@
         "center, class:^(scratchpad)$"
 
         # Geary scratchpad rules
-        "float, class:^(geary)$"
-        "size 80% 85%, class:^(geary)$"
-        "workspace special silent, class:^(geary)$"
-        "center, class:^(geary)$"
-        "opacity 0.85, class:^(geary)$"
+        # "float, class:^(geary)$"
+        # "size 80% 85%, class:^(geary)$"
+        # "workspace special silent, class:^(geary)$"
+        # "center, class:^(geary)$"
+        # "opacity 0.85, class:^(geary)$"
 
         # Pavucontrol scratchpad rules
         "float, class:^(pavucontrol)$"
