@@ -18,7 +18,7 @@
   programs.home-manager.enable = true;
 
   imports = [
-    # ../../hm-modules/wm/gnome.nix #window manager config
+    ../../hm-modules/wm/gnome.nix #window manager config
     ../../hm-modules/shell/sh.nix # My zsh and bash config
     ../../hm-modules/shell/cli-collection.nix # Useful CLI apps
     ../../hm-modules/app/ranger/ranger.nix # My ranger file manager config
