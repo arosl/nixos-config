@@ -9,7 +9,10 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-
+    clipboard = {
+      providers.wl-copy.enable = true;
+    };
+    
     colorschemes.catppuccin = {
       enable = true;
       autoLoad = true;
@@ -50,7 +53,6 @@
       completeopt = "menuone,noinsert,noselect";
 
       # Behaviour
-      #mapleader = " ";  # Space as leader key
       hidden = true;
       errorbells = false;
       swapfile = false;
@@ -64,6 +66,7 @@
       modifiable = true;
       encoding = "UTF-8";
       showmode = false;
+      clipboard = "unnamedplus";
     };
 
     autoCmd = [
@@ -118,11 +121,12 @@
       vim-highlightedyank
     ];
 
+    globals.mapleader = " ";
     keymaps = [
       # Normal mode: Toggle comment on the current line
       {
         mode = "n";
-        key = "<C-/>";
+        key = "<C-_>";
         action = "<Cmd>lua require('Comment.api').toggle.linewise.current()<CR>";
         options = {
           desc = "Toggle comment on current line";
@@ -132,7 +136,7 @@
       # Visual mode: Toggle comment on selected lines
       {
         mode = "v";
-        key = "<C-/>";
+        key = "<C-_>";
         action = "<Cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>";
         options = {
           desc = "Toggle comment on selected lines";
