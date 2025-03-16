@@ -32,7 +32,8 @@ in {
     # ../../hm-modules/app/browser/qutebrowser.nix # qutebrowser
     ../../hm-modules/app/chat/weechat.nix #weechat matrix overlay
     ../../hm-modules/app/editor/helix/helix.nix # helix editor
-    ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
+    #../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
+    ../../hm-modules/app/editor/nixvim/nixvim.nix # neovim editor with nixvim
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
     ../../hm-modules/app/editor/zeditor/zeditor.nix # zed-editor
     #  ../../hm-modules/app/email/neomutt.nix #neomutt email client

@@ -25,7 +25,7 @@
     ../../hm-modules/app/terminal/tmux.nix # Tmux setup
     ../../hm-modules/lang/lsp-formatters.nix # LSP and formaters availabe
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
-    ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
+#    ../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/helix/helix.nix # helix editor
     ../../hm-modules/hardware/bluetooth.nix # Bluetooth
     ../../hm-modules/app/browser/chromium.nix # Chromium

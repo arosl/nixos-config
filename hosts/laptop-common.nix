@@ -69,6 +69,8 @@
     initrd.services.udev ={
       packages = with pkgs; [
         qmk-udev-rules
+        via
+        vial
       ];
     };
     loader.systemd-boot.configurationLimit = 10;

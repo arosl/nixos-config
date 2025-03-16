@@ -39,7 +39,6 @@
     tmux
     tree
     unzip
-    vim
     w3m
     yq
     xmlstarlet

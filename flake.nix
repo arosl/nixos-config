@@ -47,6 +47,10 @@
     catppuccin = {
       url = "github:catppuccin/nix";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixpkgs-master, catppuccin, home-manager, alejandra, ... } @ inputs: let
@@ -103,7 +107,7 @@
 
             # Always install alejandra linter
             {
-            #  environment.systemPackages = [alejandra.defaultPackage.${system}];
+             environment.systemPackages = [alejandra.defaultPackage.${system}];
             }
 
             # Cosmic Desktop Settings
@@ -146,6 +150,7 @@
         modules = [
           ./users/andreas/home.nix
           inputs.catppuccin.homeManagerModules.catppuccin
+          inputs.nixvim.homeManagerModules.nixvim
         ];
         extraSpecialArgs = {
           inherit (inputs) hyprland-plugins stylix sops-nix;
