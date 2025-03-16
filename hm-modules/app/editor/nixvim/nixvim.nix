@@ -12,7 +12,7 @@
     clipboard = {
       providers.wl-copy.enable = true;
     };
-    
+
     colorschemes.catppuccin = {
       enable = true;
       autoLoad = true;
@@ -51,6 +51,8 @@
       cmdheight = 1;
       scrolloff = 10;
       completeopt = "menuone,noinsert,noselect";
+      showmatch = true;
+      matchtime = 2;
 
       # Behaviour
       hidden = true;
@@ -71,13 +73,14 @@
 
     autoCmd = [
       {
-        event = [ "FileType" ];
-        pattern = [ "puppet" ];
+        event = ["FileType"];
+        pattern = ["puppet"];
         command = "TSBufEnable highlight";
       }
     ];
 
     plugins = {
+      noice.enable = true;
       lualine.enable = true;
       telescope.enable = true;
       comment.enable = true;
@@ -85,6 +88,7 @@
       indent-blankline.enable = true;
       nvim-tree.enable = true;
       which-key.enable = true;
+      lazygit.enable = true;
 
       # Enable treesitter
       treesitter = {
@@ -108,10 +112,18 @@
           formattersByFt = {
             # nix = [pkgs.nixfmt-rfc-style];
             nix = ["alejandra"];
-            puppet = [pkgs.puppet-lint];
+            puppet = ["puppet-lint"];
             python = ["black"];
           };
           formatOnSave = true;
+        };
+      };
+
+      #configure vim obsidian
+      obsidian ={
+        enable = true;
+        settings = {
+          dir = "~/myobsvault";
         };
       };
     };
@@ -125,7 +137,7 @@
     keymaps = [
       # Normal mode: Toggle comment on the current line
       {
-        mode = "n";
+        mode = ["n" "i"];
         key = "<C-_>";
         action = "<Cmd>lua require('Comment.api').toggle.linewise.current()<CR>";
         options = {
@@ -147,9 +159,27 @@
       {
         mode = "n";
         key = "<leader>f";
-        action = "<Cmd>lua require('conform').format()<CR>";
+        action = "<CMD>lua require('conform').format()<CR>";
         options = {
           desc = "Manually format the current file";
+          noremap = true;
+          silent = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>n";
+        action = "<CMD>NvimTreeToggle<CR>";
+        options = {
+          desc = "Toggle NvimTree";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>gg";
+        action = "<CMD>LazyGit<CR>";
+        options = {
+          desc = "Toggle LazyGit";
           noremap = true;
           silent = true;
         };
