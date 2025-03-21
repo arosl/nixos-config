@@ -102,7 +102,8 @@ in {
       prusa-slicer
       orca-slicer
       freecad
-      openscad
+      #openscad
+      openscad-unstable
       
       # Office
       libreoffice

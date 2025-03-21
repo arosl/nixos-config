@@ -59,7 +59,8 @@
       errorbells = false;
       swapfile = false;
       backup = false;
-      undodir = "$HOME/.vim/undodir"; # Expanded at runtime
+      undodir = "${config.home.homeDirectory}/.vim/undodir";
+
       undofile = true;
       backspace = "indent,eol,start";
       splitright = true;
@@ -87,8 +88,17 @@
       web-devicons.enable = true;
       indent-blankline.enable = true;
       nvim-tree.enable = true;
-      which-key.enable = true;
       lazygit.enable = true;
+      nvim-surround.enable = true;
+
+      which-key = {
+        enable = true;
+
+        settings = {
+          delay = 200;
+          spec = [];
+        };
+      };
 
       # Enable treesitter
       treesitter = {
@@ -120,7 +130,7 @@
       };
 
       #configure vim obsidian
-      obsidian ={
+      obsidian = {
         enable = true;
         settings = {
           dir = "~/myobsvault";
@@ -138,7 +148,7 @@
       # Normal mode: Toggle comment on the current line
       {
         mode = ["n" "i"];
-        key = "<C-_>";
+        key = ":C-/:";
         action = "<Cmd>lua require('Comment.api').toggle.linewise.current()<CR>";
         options = {
           desc = "Toggle comment on current line";
@@ -148,7 +158,7 @@
       # Visual mode: Toggle comment on selected lines
       {
         mode = "v";
-        key = "<C-_>";
+        key = "<C-/>";
         action = "<Cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>";
         options = {
           desc = "Toggle comment on selected lines";
@@ -183,6 +193,32 @@
           noremap = true;
           silent = true;
         };
+      }
+      # Add surround (like ys)
+      {
+        mode = "n";
+        key = "<leader>ys";
+        action = ''
+          <cmd>lua vim.api.nvim_feedkeys("ys", "m", false)<CR>'';
+        options.desc = "Add surround (like ys)";
+      }
+
+      # Delete surround (like ds)
+      {
+        mode = "n";
+        key = "<leader>ds";
+        action = ''
+          <cmd>lua vim.api.nvim_feedkeys("ds", "m", false)<CR>'';
+        options.desc = "Delete surround (like ds)";
+      }
+
+      # Change surround (like cs)
+      {
+        mode = "n";
+        key = "<leader>cs";
+        action = ''
+          <cmd>lua vim.api.nvim_feedkeys("cs", "m", false)<CR>'';
+        options.desc = "Change surround (like cs)";
       }
     ];
   };
