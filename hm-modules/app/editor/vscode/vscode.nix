@@ -25,7 +25,7 @@ in {
       extensions = with pkgs.vscode-extensions; [
         # amirha.better-comments-2
         # myPuppetVscode
-        catppuccin.catppuccin-vsc
+        #        catppuccin.catppuccin-vsc
         bbenoist.nix
         dotenv.dotenv-vscode
         esbenp.prettier-vscode

@@ -35,7 +35,7 @@ in {
     #../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/nixvim/nixvim.nix # neovim editor with nixvim
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
-    ../../hm-modules/app/editor/zeditor/zeditor.nix # zed-editor
+    #../../hm-modules/app/editor/zeditor/zeditor.nix # zed-editor
     #  ../../hm-modules/app/email/neomutt.nix #neomutt email client
     # ../../hm-modules/app/email/mbsync.nix #mbsync of email
     # ../../hm-modules/app/email/email.nix # email config
@@ -45,6 +45,7 @@ in {
     ../../hm-modules/app/pwmanager/pass.nix # install pass
     ../../hm-modules/app/ranger/ranger.nix # My ranger file manager config
     ../../hm-modules/app/terminal/tmux.nix # Tmux setup
+    ../../hm-modules/app/terminal/zellij.nix # zellij setup
     ../../hm-modules/app/virtualization/virtualization.nix # Virtual machines
     ../../hm-modules/hardware/bluetooth.nix # Bluetooth
     ../../hm-modules/lang/lsp-formatters.nix # LSP and formaters availabe
@@ -91,8 +92,8 @@ in {
       browsh
       yazi
       foot
-      wezterm
       vial
+      hyprpicker
 
       #Custom packages
       customPkgs.deco
@@ -102,9 +103,8 @@ in {
       prusa-slicer
       orca-slicer
       freecad
-      #openscad
       openscad-unstable
-      
+
       # Office
       libreoffice
       mate.atril
@@ -178,6 +178,12 @@ in {
       audio-recorder
       vocal
     ];
+  };
+
+  programs = {
+    wezterm.enable = true;
+    ghostty.enable = true;
+    texlive.enable = true;
   };
 
   xdg = {

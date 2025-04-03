@@ -72,15 +72,16 @@
         "$mod,code:47,Open launcher, exec, fuzzel"
 
         # Launch applications
-        "$mod,T,Launch Terminal on current workspace,exec,alacritty --class modTAlacritty"
-        "SUPERSHIFT,T,Launch Terminal on terminal workspace,exec,alacritty"
+        "$mod,T,Launch Terminal on current workspace,exec,ghostty --class=mod.Term.Ghostty"
+        "SUPERSHIFT,T,Launch Terminal on terminal workspace,exec,ghostty"
         "SUPERSHIFT,B,Launch Brave browser,exec,brave"
 
         # Scratchpads
         "$mod,Z,Toggle terminal scratchpad,exec,pypr toggle term && hyprctl dispatch bringactivetotop"
-        "$mod,R,Toggle ranger scratchpad,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop"
+        "$mod,R,Toggle yazi scratchpad,exec,pypr toggle yazi && hyprctl dispatch bringactivetotop"
         "$mod,B,Toggle btm scratchpad,exec,pypr toggle btm && hyprctl dispatch bringactivetotop"
         "$mod,O,Toggle obsidian scratchpad,exec,pypr toggle obs && hyprctl dispatch bringactivetotop"
+        "$mod,E,Toggle geary scratchpad,exec,pypr toggle geary && hyprctl dispatch bringactivetotop"
 
         # Screenshots
         ",code:107,Take screenshot of region,exec,hyprshot -m region"
@@ -153,12 +154,17 @@
         "workspace special silent, class:^(scratchpad)$"
         "center, class:^(scratchpad)$"
 
+        "float, class:^(com.ghostty.scratchpad)$"
+        "size 60% 85%, class:^(com.ghostty.scratchpad)$"
+        "workspace special silent, class:^(com.ghostty.scratchpad)$"
+        "center, class:^(com.ghostty.scratchpad)$"
+        
         # Geary scratchpad rules
-        # "float, class:^(geary)$"
-        # "size 80% 85%, class:^(geary)$"
-        # "workspace special silent, class:^(geary)$"
-        # "center, class:^(geary)$"
-        # "opacity 0.85, class:^(geary)$"
+        "float, class:^(geary)$"
+        "size 80% 85%, class:^(geary)$"
+        "workspace special silent, class:^(geary)$"
+        "center, class:^(geary)$"
+        "opacity 0.85, class:^(geary)$"
 
         # Pavucontrol scratchpad rules
         "float, class:^(pavucontrol)$"
@@ -181,6 +187,7 @@
 
         # Normal terminals on workspace 3
         "workspace 3, class:^(Alacritty)$"
+        "workspace 3, class:^(com.mitchellh.ghostty)$"
 
         # Move chat to workspace 4 when they open
         "workspace 4, class:^(whatsapp-for-linux)$"

@@ -17,18 +17,22 @@
     plugins = ["scratchpads"]
 
     [scratchpads.term]
-    command = "alacritty --class scratchpad"
-    margin = 50
+    command = "ghostty --class=com.ghostty.scratchpad"
     lazy = true
 
-    [scratchpads.ranger]
-    command = "kitty --class scratchpad -e ranger"
+    [scratchpads.yazi]
+    command = "ghostty --class=com.ghostty.scratchpad -e yazi" 
     margin = 50
     lazy = true
 
     [scratchpads.btm]
-    command = "alacritty --class scratchpad -e btm --battery"
+    command = "ghostty --class=com.ghostty.scratchpad -e btm --battery"
     margin = 50
+    lazy = true
+
+    [scratchpads.geary]
+    command = "geary"
+    size = "90% 90%"
     lazy = true
 
     [scratchpads.obs]

@@ -82,7 +82,7 @@
     fontPkg = pkgs.intel-one-mono;
     name = "Andreas";
     spawnEditor = "nvim";
-    term = "alacritty";
+    term = "ghostty";
     theme = "catppuccin-mocha";
     username = "andreas";
     wm = "hyprland";

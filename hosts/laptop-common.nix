@@ -114,6 +114,7 @@
     logiops
     bpftools
     bcc
+    ghostty
   ];
 
 
