@@ -37,7 +37,7 @@
     rsync
     speedtest-cli
     tmux
-    tree
+    #    tree
     unzip
     w3m
     yq

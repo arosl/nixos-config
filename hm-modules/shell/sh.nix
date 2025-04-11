@@ -19,6 +19,28 @@ in {
     eza = {
       enable = true;
       icons = "auto";
+      #set programs.eza.enableNushellIntegration to false so it does not overwrite nu ls
+      enableNushellIntegration = false;
+    };
+
+    nushell = {
+      enable = true;
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
+    };
+
+    starship = {
+      enable = true;
+      settings = {
+        add_newline = false;
+        character = {
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[➜](bold red)";
+        };
+      };
     };
 
     zsh = {
@@ -46,6 +68,11 @@ in {
       };
     };
 
+    yazi = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+
     bash = {
       enable = true;
       enableCompletion = true;
@@ -54,7 +81,18 @@ in {
     direnv = {
       enable = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    mcfly = {
+      enable = true;
+      fzf.enable = true;
     };
   };
 

@@ -35,7 +35,7 @@ in {
     #../../hm-modules/app/editor/nvim-lua/neovim.nix # neovim editor
     ../../hm-modules/app/editor/nixvim/nixvim.nix # neovim editor with nixvim
     ../../hm-modules/app/editor/vscode/vscode.nix # vscode editor
-    #../../hm-modules/app/editor/zeditor/zeditor.nix # zed-editor
+    ../../hm-modules/app/editor/zeditor/zeditor.nix # zed-editor
     #  ../../hm-modules/app/email/neomutt.nix #neomutt email client
     # ../../hm-modules/app/email/mbsync.nix #mbsync of email
     # ../../hm-modules/app/email/email.nix # email config
@@ -90,7 +90,6 @@ in {
       magic-wormhole
       qutebrowser
       browsh
-      yazi
       foot
       vial
       hyprpicker
@@ -158,7 +157,7 @@ in {
       nodejs_20
       sqlite
       cargo
-      beekeeper-studio
+      #beekeeper-studio
       opencv
 
       # Media
